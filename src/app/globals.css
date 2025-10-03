@@ -5,17 +5,7 @@
 
 :root {
   /* Colors */
-  /* --color-primary: #0070f3;
-  --color-secondary: #6c7d73;
-  --color-success: #28a745;
-  --color-danger: #dc3545;
-  --color-warning: #ffc107;
-  --color-info: #17a2b8;
-  --color-light: #f8f9fa;
-  --color-dark: #343a40;
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  /* --color-gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   --color-gradient-2: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%); */
 
   --primary: #3c83f6;
@@ -281,5 +271,12 @@
   label {
     @apply my-1
   }
+  
+}
+
+/* custom width for course form */
+.custom-dialog {
+  max-width: 50rem;
+  width: 100%;
 }
 

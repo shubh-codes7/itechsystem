@@ -1,6 +1,4 @@
-
 import CertificationSection from "@/components/courseComponets/CertificationSection";
-
 import CurriculumSection from "@/components/courseComponets/CurriculumSection";
 import DemoBooking from "@/components/courseComponets/DemoBooking";
 import HeroSection from "@/components/courseComponets/HeroSection";
@@ -10,9 +8,7 @@ import HeroSection from "@/components/courseComponets/HeroSection";
 export default async function CourseDetails({ params }) {
   const { slug } = await params
   
-  const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/courses/${slug}`, {
-  cache: "no-store",
-});
+  const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/courses/${slug}`);
 
 if (!res.ok) {
   console.error("Fetch failed", res.status, res.statusText);

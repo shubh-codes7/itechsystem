@@ -26,12 +26,13 @@ export async function GET(request, { params }) {
 }
 
 export async function PUT(request, { params }) {
+  const {slug} = params
   try {
     await connectDB();
     const body = await request.json();
     
-    const course = await Course.findByIdAndUpdate(
-      params.id,
+    const course = await Course.findOneAndUpdate(
+      {slug},
       body,
       { new: true, runValidators: true }
     );
@@ -62,9 +63,10 @@ export async function PUT(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
+  const {slug} = params
   try {
     await connectDB();
-    const course = await Course.findByIdAndDelete(params.id);
+    const course = await Course.findOneAndDelete({slug});
     
     if (!course) {
       return NextResponse.json(

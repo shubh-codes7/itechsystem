@@ -156,7 +156,7 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form className="space-y-6">
       <Card>
         <CardHeader>
           <CardTitle>Basic Information</CardTitle>
@@ -247,43 +247,7 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Technologies</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex gap-2 mb-4">
-            <Input
-              placeholder="Add technology"
-              value={newTechnology}
-              onChange={(e) => setNewTechnology(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTechnology())}
-              data-testid="input-new-technology"
-            />
-            <Button type="button" onClick={addTechnology}>
-              <Plus className="h-4 w-4" />
-            </Button>
-          </div>
-          
-          <div className="flex flex-wrap gap-2">
-            {formData.technologies.map((tech, index) => (
-              <Badge key={index} variant="secondary" className="flex items-center gap-1">
-                {tech}
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  className="h-auto p-0 hover:bg-transparent"
-                  onClick={() => removeTechnology(index)}
-                  data-testid={`button-remove-technology-${index}`}
-                >
-                  <X className="h-3 w-3" />
-                </Button>
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+      
 
 
       <Card>
@@ -399,6 +363,7 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
       <Card>
         <CardHeader>
           <CardTitle>Tools</CardTitle>
+          <span className="text-xs mb-2">Use http://icons8.com/icons to get icons url</span>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="border rounded-lg p-4 space-y-4 bg-muted/30">
@@ -407,7 +372,7 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
                 <Label htmlFor="tool-name">Tool Name</Label>
                 <Input
                   id="tool-name"
-                  placeholder="e.g., GCC"
+                  placeholder="e.g., Power Bi"
                   value={newTool.name}
                   onChange={(e) => setNewTool(prev => ({ ...prev, name: e.target.value }))}
                 />
@@ -416,7 +381,7 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
                 <Label htmlFor="tool-icon">Icon URL</Label>
                 <Input
                   id="tool-icon"
-                  placeholder="e.g., http://icon8-gcc.com"
+                  placeholder="e.g., http://icon8-powerbi.com"
                   value={newTool.icon}
                   onChange={(e) => setNewTool(prev => ({ ...prev, icon: e.target.value }))}
                 />
@@ -455,11 +420,52 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
         </CardContent>
       </Card>
 
+
+      {/* Tags: This tags are visible in course cards as badges */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Tags</CardTitle>
+          <span className="text-xs mb-2">Tags are important, They are displayed on each card. add the concepts, important tools, frameworks, languages taught in this course.</span>
+        </CardHeader>
+        <CardContent>
+          <div className="flex gap-2 mb-4">
+            <Input
+              placeholder="Add Tags"
+              value={newTechnology}
+              onChange={(e) => setNewTechnology(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTechnology())}
+              data-testid="input-new-technology"
+            />
+            <Button type="button" onClick={addTechnology}>
+              <Plus className="h-4 w-4" />
+            </Button>
+          </div>
+          
+          <div className="flex flex-wrap gap-2">
+            {formData.technologies.map((tech, index) => (
+              <Badge key={index} variant="secondary" className="flex items-center gap-1">
+                {tech}
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="h-auto p-0 hover:bg-transparent"
+                  onClick={() => removeTechnology(index)}
+                  data-testid={`button-remove-technology-${index}`}
+                >
+                  <X className="h-3 w-3" />
+                </Button>
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
       <div className="flex justify-end space-x-4">
         <Button type="button" variant="outline" onClick={onCancel}>
           Cancel
         </Button>
-        <Button type="submit">
+        <Button onClick={handleSubmit} type="button">
           Save Course
         </Button>
       </div>
