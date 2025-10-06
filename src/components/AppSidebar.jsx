@@ -32,32 +32,32 @@ const menuItems = [
   },
   {
     title: "Courses",
-    url: "admin/courses",
+    url: "/admin/courses",
     icon: BookOpen,
   },
   {
     title: "Projects",
-    url: "admin/projects", 
+    url: "/admin/projects", 
     icon: FolderOpen,
   },
   {
     title: "Services",
-    url: "admin/services",
+    url: "/admin/services",
     icon: Target,
   },
   {
     title: "Solutions",
-    url: "admin/solutions",
+    url: "/admin/solutions",
     icon: GraduationCap,
   },
   {
     title: "Jobs",
-    url: "admin/jobs",
+    url: "/admin/jobs",
     icon: Briefcase,
   },
   {
     title: "Placements",
-    url: "admin/placements",
+    url: "/admin/placements",
     icon: Users,
   }
 ];

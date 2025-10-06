@@ -77,11 +77,10 @@ export default function AboutPage() {
   ];
 
   const achievements = [
-    { number: "15000+", label: "Students Trained", icon: Users },
-    { number: "95%", label: "Placement Rate", icon: TrendingUp },
-    { number: "8+", label: "Years Experience", icon: Calendar },
-    { number: "50+", label: "Courses Offered", icon: BookOpen },
-    { number: "200+", label: "Corporate Partners", icon: Building },
+    { number: "1000+", label: "Students Trained", icon: Users },
+    { number: "85%", label: "Placement Rate", icon: TrendingUp },
+    { number: "18+", label: "Years Experience", icon: Calendar },
+    { number: "30+", label: "Courses Offered", icon: BookOpen },
     { number: "4.9", label: "Average Rating", icon: Star }
   ];
 
@@ -217,7 +216,7 @@ export default function AboutPage() {
       {/* Stats Counter Section */}
       <section id="counter-section" className="py-16 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          <div className="flex justify-between gap-8">
             {achievements.map((achievement, index) => {
               const IconComponent = achievement.icon;
               return (

@@ -27,6 +27,7 @@ export default async function Courses() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {courses.length > 0 && courses.map((course, idx) => (
               <Card key={idx} className="overflow-hidden hover-elevate transition-all duration-200 pt-0">
+                <Link href={`/courses/${course.slug}`}>
                 <div className="aspect-video overflow-hidden">
                   <Image
                     src={course.image} 
@@ -56,6 +57,7 @@ export default async function Courses() {
                     ))}
                   </div>
                 </CardContent>
+                </Link>
               </Card>
             ))}
           </div>

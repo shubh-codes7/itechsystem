@@ -10,16 +10,9 @@ import Image from "next/image"
 
 export default function HeroSection({ onDemoClick, title, subheading }) {
 
-  // title = title.split('%20').join(' ')
 
-  const handleDemoClick = () => {
-    console.log('Demo booking clicked')
-    onDemoClick?.()
-  }
-
-  const handleExploreClick = () => {
-    console.log('Explore curriculum clicked')
-    document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' })
+  const handleOpenForm = () => {
+    console.log('Open Form')
   }
 
   return (
@@ -35,7 +28,7 @@ export default function HeroSection({ onDemoClick, title, subheading }) {
         <div className="max-w-4xl mx-auto">
           <Badge className="mb-6 bg-secondary text-secondary-foreground border-secondary-border" data-testid="badge-course-status">
             <TrendingUp className="w-4 h-4 mr-2" />
-            95% Placement Rate
+            85% Placement Rate
           </Badge>
           
           <h1 className="text-5xl md:text-7xl font-bold font-[Poppins] mb-6 leading-tight" data-testid="text-hero-title">
@@ -67,7 +60,7 @@ export default function HeroSection({ onDemoClick, title, subheading }) {
             <div className="flex flex-col items-center">
               <div className="flex items-center mb-2">
                 <TrendingUp className="w-5 h-5 mr-2 text-secondary" />
-                <span className="text-2xl font-bold" data-testid="text-stat-salary">₹8.5L</span>
+                <span className="text-2xl font-bold" data-testid="text-stat-salary">₹3.2L</span>
               </div>
               <span className="text-gray-300">Average Package</span>
             </div>
@@ -77,34 +70,12 @@ export default function HeroSection({ onDemoClick, title, subheading }) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground border-primary-border text-lg px-8 py-6 h-auto"
-              onClick={handleDemoClick}
-              data-testid="button-book-demo"
-            >
-              Book Free Demo
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            <Button 
-              size="lg" 
               variant="outline" 
               className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8 py-6 h-auto"
-              onClick={handleExploreClick}
-              data-testid="button-explore-curriculum"
+              onClick={handleOpenForm}
             >
-              Explore Curriculum
+              Book Free Demo
             </Button>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="mt-12 pt-8 border-t border-white/20">
-            <p className="text-gray-300 mb-4">Trusted by students from</p>
-            <div className="flex flex-wrap justify-center gap-8 opacity-70">
-              <span className="text-white font-medium">Gokhale</span>
-              <span className="text-white font-medium">K K Wagh</span>
-              <span className="text-white font-medium">Sandip</span>
-              <span className="text-white font-medium">KBT</span>
-              <span className="text-white font-medium">MET</span>
-            </div>
           </div>
         </div>
       </div>

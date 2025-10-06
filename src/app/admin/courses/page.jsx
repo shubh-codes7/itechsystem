@@ -25,7 +25,7 @@ export default function Courses() {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/courses`);
+      const res = await axios.get(`/api/courses`);
       setCourses(res.data);
     } catch (error) {
       console.error('Error fetching courses:', error);

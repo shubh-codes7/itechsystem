@@ -34,11 +34,11 @@ const popularCourses = [
   },
   {
     id: "3",
-    slug: "data_science",
-    title: "Data Science",
+    slug: "data_analytics",
+    title: "Data Analytics",
     image: dsImg,
     description:
-      "Strengthen problem-solving by practicing algorithms, data structures, and coding patterns.",
+      "Learn to analyze data, generate insights, and make data-driven business decisions effectively.",
     technologies: ["PowerBi", "Data Analytics"],
   },
   {
@@ -96,6 +96,7 @@ export default function CourseSection() {
                 key={course.id}
                 className="overflow-hidden hover-elevate pt-0 transition-all duration-200"
               >
+                <Link href={`/courses/${course.slug}`}>
                 <div className="aspect-video overflow-hidden">
                   <Image
                     src={course.image}
@@ -124,6 +125,7 @@ export default function CourseSection() {
                     ))}
                   </div>
                 </CardContent>
+                </Link>
               </Card>
             ))}
           </div>

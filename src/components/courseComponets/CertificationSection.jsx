@@ -9,59 +9,18 @@ import { Award, TrendingUp, Users, Star, Download, ExternalLink, CheckCircle } f
 const certifications = [
   {
     id: "1",
-    title: "Full Stack Developer Certificate",
-    description: "Industry-recognized certification upon course completion",
+    title: "Course Certificate",
+    description: "Industry-recognized certification upon course completion.",
     icon: "🎓",
     verified: true
   },
   {
     id: "2",
-    title: "Project Portfolio Certificate",
-    description: "Showcase your completed projects with verified credentials",
+    title: "Internship Certificate",
+    description: "Internship Certificate to Boost Your Resume. (if applicable)",
     icon: "📁",
     verified: true
-  },
-  {
-    id: "3",
-    title: "Industry Partnership Certificate",
-    description: "Backed by leading tech companies and industry experts",
-    icon: "🤝",
-    verified: true
   }
-]
-
-const careerBenefits = [
-  {
-    title: "Salary Increase",
-    description: "Average 150% salary boost after completion",
-    icon: TrendingUp,
-    stats: "150%"
-  },
-  {
-    title: "Job Opportunities",
-    description: "Access to exclusive job portal with 500+ openings",
-    icon: Users,
-    stats: "500+"
-  },
-  {
-    title: "Industry Recognition",
-    description: "Certificate accepted by top-tier companies",
-    icon: Star,
-    stats: "95%"
-  },
-  {
-    title: "Career Growth",
-    description: "Alumni promoted to senior roles within 2 years",
-    icon: Award,
-    stats: "85%"
-  }
-]
-
-const industryRecognition = [
-  "Microsoft Technology Partner",
-  "AWS Training Partner",
-  "Google Cloud Partner",
-  "NASSCOM Certified Course"
 ]
 
 export default function CertificationSection() {
@@ -92,12 +51,11 @@ export default function CertificationSection() {
         </div>
 
         {/* Certifications */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="flex justify-center gap-6 mb-16">
           {certifications.map((cert) => (
             <Card 
               key={cert.id} 
               className="text-center hover-elevate transition-all duration-200"
-              data-testid={`card-certification-${cert.id}`}
             >
               <CardHeader>
                 <div className="text-6xl mb-4">{cert.icon}</div>
@@ -122,61 +80,16 @@ export default function CertificationSection() {
           ))}
         </div>
 
-        {/* Career Benefits */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center mb-8" data-testid="text-benefits-title">
-            Career Benefits
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {careerBenefits.map((benefit, index) => (
-              <Card 
-                key={index} 
-                className="text-center p-6 hover-elevate transition-all duration-200"
-                data-testid={`card-benefit-${index}`}
-              >
-                <benefit.icon className="w-8 h-8 text-primary mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary mb-2" data-testid={`text-benefit-${index}-stats`}>
-                  {benefit.stats}
-                </div>
-                <h4 className="font-semibold mb-2" data-testid={`text-benefit-${index}-title`}>
-                  {benefit.title}
-                </h4>
-                <p className="text-sm text-muted-foreground" data-testid={`text-benefit-${index}-description`}>
-                  {benefit.description}
-                </p>
-              </Card>
-            ))}
-          </div>
-        </div>
+      
 
         {/* Industry Recognition */}
         <div className="text-center">
-          <h3 className="text-2xl font-bold mb-8" data-testid="text-recognition-title">
-            Industry Recognition & Partnerships
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {industryRecognition.map((recognition, index) => (
-              <Card 
-                key={index} 
-                className="p-6 hover-elevate transition-all duration-200"
-                data-testid={`card-recognition-${index}`}
-              >
-                <div className="text-center">
-                  <Award className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <div className="font-medium" data-testid={`text-recognition-${index}`}>
-                    {recognition}
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-          
           <div className="bg-card border border-card-border rounded-lg p-8">
             <h4 className="text-xl font-semibold mb-4" data-testid="text-guarantee-title">
               100% Placement Assistance Guarantee
             </h4>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, modi! Asperiores ipsa, itaque consectetur dolore facilis incidunt optio ipsum. Ex?
+              We don’t just teach—we place. From resume building and mock interviews to salary negotiation and lifetime job support, our institute ensures you're fully prepared to land your dream role in tech.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <div className="flex items-center">

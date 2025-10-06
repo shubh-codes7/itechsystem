@@ -147,7 +147,6 @@ export default function DemoBooking() {
                       selectedSlot === slot.id ? 'ring-2 ring-primary bg-primary/5' : ''
                     }`}
                     onClick={() => handleSlotSelect(slot.id)}
-                    data-testid={`card-slot-${slot.id}`}
                   >
                     <CardContent className="p-4">
                       <div className="flex items-center justify-between">
@@ -169,7 +168,7 @@ export default function DemoBooking() {
                             <Users className="w-4 h-4 mr-1" />
                             <span data-testid={`text-slot-${slot.id}-available`}>{slot.available} spots</span>
                           </div>
-                          {slot.available <= 2 && (
+                          {slot.available >= 5 && (
                             <Badge variant="destructive" className="text-xs">
                               Almost Full
                             </Badge>

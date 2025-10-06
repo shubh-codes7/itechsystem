@@ -19,10 +19,17 @@ export default function ResponsiveHeader() {
       icon: GraduationCap,
       hasDropdown: true,
       dropdownItems: [
-        { name: 'MERN Stack Development', href: '/courses/mern' },
-        { name: 'ReactJS', href: '/courses/react' },
-        { name: 'Programming', href: '/courses/programming' },
-        { name: 'UI UX', href: '/courses/uiux' }
+        { name: 'MERN Stack Development', href: '/courses/mern', icon: "https://img.icons8.com/?size=100&id=VHCVqzF1sqU9&format=png&color=000000" },
+        { name: 'MEAN Stack Development', href: '/courses/mean', icon: "https://img.icons8.com/?size=100&id=102562&format=png&color=000000" },
+        { name: 'Programming', href: '/courses/programming', icon: "https://img.icons8.com/?size=100&id=19294&format=png&color=000000" },
+        { name: 'UI UX', href: '/courses/uiux', icon: "https://img.icons8.com/?size=100&id=18706&format=png&color=000000" },
+        { name: 'Data Analytics', href: '/courses/data-analytics', icon: "https://img.icons8.com/?size=100&id=B0dYqU1YVr72&format=png&color=000000" },
+        { name: 'Cloud Computing & DevOps', href: '/courses/cloud', icon: "https://img.icons8.com/?size=100&id=A4Ex3d4V9VuC&format=png&color=000000" },
+        { name: 'Python Development', href: '/courses/python-dev', icon: "https://img.icons8.com/?size=100&id=13441&format=png&color=000000" },
+        { name: 'Php Web Development', href: '/courses/php-dev', icon: "https://img.icons8.com/?size=100&id=f0R4xVI4Sc8O&format=png&color=000000" },
+        { name: 'Java Full Stack', href: '/courses/java-dev', icon: "https://img.icons8.com/?size=100&id=90519&format=png&color=000000" },
+        { name: 'Dotnet', href: '/courses/dotnet', icon: "https://img.icons8.com/?size=100&id=1BC75jFEBED6&format=png&color=000000" },
+        { name: 'Salesforce', href: '/courses/salesforce', icon: "https://img.icons8.com/?size=100&id=38804&format=png&color=000000" },
       ]
     },
     { 
@@ -104,15 +111,11 @@ export default function ResponsiveHeader() {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <div className="flex items-center">
+            <div className="flex-1 items-center">
               <a href="/" className="flex items-center group">
-                <div className="relative">
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
-                    <Code className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
-                  </div>
-                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
-                </div>
-                <div className="ml-3">
+                <Code className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
+                
+                <div className="ml-3 flex-1">
                   <h1 className="text-xl lg:text-2xl font-bold text-white bg-clip-text">
                     i-Tech System
                   </h1>
@@ -148,14 +151,22 @@ export default function ResponsiveHeader() {
                     {/* Dropdown Menu */}
                     {item.hasDropdown && (
                       <div
-                        className={`absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-200/50 overflow-hidden transition-all duration-300 ${
+                        className={`absolute top-full left-0 mt-2  w-[50vw] bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-200/50 overflow-hidden transition-all duration-300 ${
                           activeDropdown === item.name
                             ? 'opacity-100 translate-y-0 visible'
                             : 'opacity-0 translate-y-2 invisible'
                         }`}
                       >
-                        <div className="p-2">
+                        <div className="p-2 grid grid-cols-2 gap-2">
                           {item.dropdownItems.map((dropdownItem, index) => (
+                            <div className='flex '>
+                              <img 
+                                src={dropdownItem.icon}
+                                width={40}
+                                height={40}
+                                alt="Icon"
+                                className="flex-shrink-0"
+                              />
                             <a
                               key={dropdownItem.name}
                               href={dropdownItem.href}
@@ -166,6 +177,7 @@ export default function ResponsiveHeader() {
                             >
                               {dropdownItem.name}
                             </a>
+                            </div>
                           ))}
                         </div>
                       </div>

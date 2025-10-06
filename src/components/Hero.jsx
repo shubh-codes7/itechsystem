@@ -132,11 +132,11 @@ export default function Hero() {
                   </span>
                 </div>
                 <div className="text-gray-300">
-                  <div className="text-blue-400">const</div>
+                  <span className="text-blue-400">const</span>
                   <span className="text-white"> success = </span>
                   <span className="text-green-400">learnWithUs()</span>
                   <div className="ml-4 text-gray-400">
-                    // 95% job placement rate
+                    // 85% job placement rate
                   </div>
                   <div className="ml-4 text-gray-400">
                     // Industry-expert instructors

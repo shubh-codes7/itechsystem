@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="flex justify-between gap-8 mb-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold font-[Poppins] text-primary mb-4" >
+            <h3 className="text-xl font-bold font-[dominique] text-primary mb-4" >
               I-Tech Systems
             </h3>
             <p className="text-white mb-4">
@@ -19,30 +19,18 @@ export default function Footer() {
               Join thousands of successful graduates working at top tech companies.
             </p>
             <div className="flex space-x-4">
-              <button 
-                onClick={() => handleSocialClick('Facebook')}
-                className="p-2 rounded-lg bg-background hover-elevate transition-all duration-200"
-              >
-                <Facebook className="w-5 h-5" />
-              </button>
-              <button 
-                onClick={() => handleSocialClick('Twitter')}
-                className="p-2 rounded-lg bg-background hover-elevate transition-all duration-200"
-              >
-                <Twitter className="w-5 h-5" />
-              </button>
-              <button 
-                onClick={() => handleSocialClick('LinkedIn')}
+              <a 
+                href="https://in.linkedin.com/company/i-tech-system"
                 className="p-2 rounded-lg bg-background hover-elevate transition-all duration-200"
               >
                 <Linkedin className="w-5 h-5" />
-              </button>
-              <button 
-                onClick={() => handleSocialClick('Instagram')}
+              </a>
+              <a 
+                href="https://instagram.com/itechsystemtraining"
                 className="p-2 rounded-lg bg-background hover-elevate transition-all duration-200"
               >
                 <Instagram className="w-5 h-5" />
-              </button>
+              </a>
             </div>
           </div>
 
