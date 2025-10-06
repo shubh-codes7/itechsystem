@@ -72,15 +72,21 @@ export default function Footer() {
               </span>
             </div>
             <div className="flex flex-wrap gap-4 text-sm text-white md:justify-end">
-              <button className="hover:text-foreground transition-colors" >
+              <a 
+                href="/privacy"
+                className="hover:text-foreground transition-colors" >
                 Privacy Policy
-              </button>
-              <button className="hover:text-foreground transition-colors">
+              </a>
+              <a 
+                href="/terms"
+                className="hover:text-foreground transition-colors">
                 Terms of Service
-              </button>
-              <button className="hover:text-foreground transition-colors" >
+              </a>
+              <a 
+                href="/refund"
+                className="hover:text-foreground transition-colors" >
                 Refund Policy
-              </button>
+              </a>
             </div>
           </div>
         </div>
