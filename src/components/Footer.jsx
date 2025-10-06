@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="bg-muted/50 border-t border-border pt-16 pb-8 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="flex justify-between gap-8 mb-12">
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-bold font-[Poppins] text-primary mb-4" >
@@ -46,40 +46,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-white mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <button 
-                  className="text-white/90 hover:text-primary transition-colors text-left"
-                >
-                  Curriculum
-                </button>
-              </li>
-              <li>
-                <button 
-                  className="text-white/90 hover:text-primary transition-colors text-left"
-                >
-                  Success Stories
-                </button>
-              </li>
-              <li>
-                <button 
-                  className="text-white/90 hover:text-primary transition-colors text-left"
-                >
-                  Free Demo
-                </button>
-              </li>
-              <li>
-                <button 
-                  className="text-white/90 hover:text-primary transition-colors text-left"
-                >
-                  Certification
-                </button>
-              </li>
-            </ul>
-          </div>
+          
 
           {/* Contact Info */}
           <div>

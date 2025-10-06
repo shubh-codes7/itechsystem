@@ -153,27 +153,31 @@ export default function Placements() {
                 key={`${student.id}-${index}`}
                 className="flex-shrink-0 w-80 hover-elevate transition-all duration-300 bg-gradient-to-r from-primary/5 to-secondary/5"
               >
-                <CardContent className="p-6">
+                <CardContent className="px-6">
                   {/* Student Header */}
                   <div className="mb-4">
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center justify-between gap-2 mb-1">
                       <h3 className="font-bold text-lg text-black" >
                         {student.name}
                       </h3>
-                      <button
+
+                      <div className="flex gap-2">
+                        <button
                         onClick={() => handleSocialClick(student.linkedin, 'LinkedIn')}
                         className="text-blue-600 hover:text-blue-800 transition-colors"
                         title="LinkedIn Profile"
-                      >
-                        <Linkedin className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => handleSocialClick(student.github, 'GitHub')}
-                        className="text-gray-700 hover:text-gray-900 transition-colors"
-                        title="GitHub Profile"
-                      >
-                        <Github className="w-4 h-4" />
-                      </button>
+                        >
+                          <Linkedin className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleSocialClick(student.github, 'GitHub')}
+                          className="text-gray-700 hover:text-gray-900 transition-colors"
+                          title="GitHub Profile"
+                        >
+                          <Github className="w-4 h-4" />
+                        </button>
+                      </div>
+                      
                     </div>
                     <p className="text-sm text-muted-foreground">{student.role}</p>
                   </div>
@@ -184,9 +188,7 @@ export default function Placements() {
                       <Badge className="bg-secondary/10 text-secondary border-secondary/20">
                         {student.company}
                       </Badge>
-                      <span className="font-bold text-primary text-lg">
-                        {student.salary}
-                      </span>
+                      
                     </div>
                     <div className="text-sm text-muted-foreground space-y-1">
                       <div className="flex items-center">

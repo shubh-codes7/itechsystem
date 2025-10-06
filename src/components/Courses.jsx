@@ -57,7 +57,7 @@ export default function CourseSection() {
   // Fetch all courses
   const fetchCourses = async () => {
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/courses`);
+      const res = await axios.get("/api/courses");
       console.log(res.data);
       setAllCourses(res.data);
     } catch (error) {
