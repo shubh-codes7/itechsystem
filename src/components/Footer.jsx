@@ -111,12 +111,12 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-border pt-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-            <div className="text-sm text-black">
+            <div className="text-sm text-white">
               <span >
                 © 2025 I-Tech Systems. All rights reserved.
               </span>
             </div>
-            <div className="flex flex-wrap gap-4 text-sm text-black md:justify-end">
+            <div className="flex flex-wrap gap-4 text-sm text-white md:justify-end">
               <button className="hover:text-foreground transition-colors" >
                 Privacy Policy
               </button>
@@ -139,10 +139,6 @@ export default function Footer() {
             <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-secondary rounded-full mr-2"></div>
-                <span>SAPOLOGY</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-secondary rounded-full mr-2"></div>
                 <span>ISO 9001:2015 Certified</span>
               </div>
               <div className="flex items-center">
@@ -152,6 +148,10 @@ export default function Footer() {
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-secondary rounded-full mr-2"></div>
                 <span>UGAC</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-secondary rounded-full mr-2"></div>
+                <span>MSME</span>
               </div>
             </div>
           </CardContent>

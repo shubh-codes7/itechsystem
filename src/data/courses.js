@@ -1885,97 +1885,7 @@ const courses = {
 
 
 // const courses = [
-//   {
-//     id: "1",
-//     slug: "mern",
-//     title: "MERN Stack Development",
-//     image: mernImg,
-//     icon: "https://img.icons8.com/color/48/react-native.png",
-//     description:
-//       "Master full-stack development using MongoDB, Express, React, and Node.js.",
-//     technologies: ["React", "Node.js", "Express.js", "MongoDB", "Redux"]
-//   },
-//   {
-//     id: "2",
-//     slug: "programming",
-//     title: "Programming Languages",
-//     image: langImg,
-//     icon: "https://img.icons8.com/color/48/code.png",
-//     description: "Learn foundational programming with C, C++, Java, and Python.",
-//     technologies: ["C", "C++", "Core Java", "Python"],
-//   },
-//   {
-//     id: "3",
-//     slug: "data_science",
-//     title: "Data Science",
-//     image: dsImg,
-//     icon: "https://img.icons8.com/color/48/artificial-intelligence.png",
-//     description:"Explore analytics, visualization, and AI-powered insights with real data.",
-//     technologies: ["Python", "Power BI", "SQL", "Data Analytics"],
-//   },
-//   {
-//     id: "4",
-//     slug: "uiux",
-//     title: "UI/UX",
-//     image: uiuxImg,
-//     icon: "https://img.icons8.com/color/48/design.png",
-//     description: "Design modern, user-friendly interfaces with top creative tools.",
-//     technologies: ["Figma", "Photoshop", "Illustrator", "Adobe XD"],
-//   },
-//   {
-//     id: "5",
-//     slug: "frontend_dev",
-//     title: "Frontend Development",
-//     image: phpImg,
-//     icon: "https://img.icons8.com/color/48/html-5--v1.png",
-//     description: "Build responsive websites with HTML, CSS, JavaScript, and frameworks.",
-//     technologies: ["HTML5", "CSS3", "Bootstrap", "JavaScript", "Tailwind CSS"]
-//   },
-//   {
-//     id: "6",
-//     slug: "backend_dotnet",
-//     title: "Core .NET Development",
-//     image: dotnetImg,
-//     icon: "https://img.icons8.com/color/48/c-sharp-logo.png",
-//     description: "Develop enterprise-grade apps using C#, ASP.NET, and SQL server.",
-//     technologies: ["C#", ".NET Core", "ASP.NET", "SQL", "MVC"]
-//   },
-//   {
-//     id: "7",
-//     slug: "backend_java",
-//     title: "Java Development",
-//     image: javaImg,
-//     icon: "https://img.icons8.com/color/48/java-coffee-cup-logo.png",
-//     description: "Build scalable apps with Core Java, Spring, and Hibernate.",
-//     technologies: ["Core Java", "Advance Java", "SQL", "Spring", "Hibernate"]
-//   },
-//   {
-//     id: "8",
-//     slug: "backend_php",
-//     title: "PHP Web Development",
-//     image: phpImg,
-//     icon: "https://img.icons8.com/officel/48/php-logo.png",
-//     description: "Create robust websites using PHP, MySQL, and frameworks together.",
-//     technologies: ["PHP", "Advance PHP", "MySQL", "CodeIgniter", "Laravel"]
-//   },
-//   {
-//     id: "9",
-//     slug: "backend_python",
-//     title: "Python Web Development",
-//     image: pythonImg,
-//     icon: "https://img.icons8.com/color/48/python.png",
-//     description: "Develop dynamic web applications using Python, Django, and databases.",
-//     technologies: ["Python", "Advance Python", "MySQL", "Django", "Flask"]
-//   },
-//   {
-//     id: "10",
-//     slug: "mean",
-//     title: "MEAN Stack Development",
-//     image: meanImg,
-//     icon: "https://img.icons8.com/color/48/angularjs.png",
-//     description: "Full-stack development with MongoDB, Express, Angular, and Node.js.",
-//     technologies: ["Angular", "Node.js", "Express.js", "MongoDB"]
-//   },
+//   
 //   {
 //     id: "11",
 //     slug: "app_dev",
@@ -2002,25 +1912,8 @@ const courses = {
 //     icon: "https://img.icons8.com/?size=100&id=MQiz3TkEm0h6&format=png&color=000000",
 //     description: "Learn SEO, social media, and digital branding for businesses.",
 //     technologies: ["SEO", "Social Media", "Google Ads", "Analytics"]
-//   },
-//   {
-//     id: "14",
-//     slug: "cloud_computing",
-//     title: "Cloud Computing",
-//     image: cloudImg,
-//     icon: "https://img.icons8.com/color/48/cloud.png",
-//     description: "Master AWS, Azure, and cloud-based infrastructure deployment skills.",
-//     technologies: ["AWS", "Azure", "Linux", "Networking"]
-//   },
-//   {
-//     id: "15",
-//     slug: "salesforce",
-//     title: "Salesforce",
-//     image: salesforceImg,
-//     icon: "https://img.icons8.com/color/48/salesforce.png",
-//     description: "Learn Salesforce CRM development, customization, and administration.",
-//     technologies: ["Salesforce CRM", "Apex", "Lightning Components"]
-//   },
+//   }
+//   
 //   {
 //     id: "16",
 //     slug: "sap",

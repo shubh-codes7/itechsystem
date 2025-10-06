@@ -114,7 +114,7 @@ export default function ResponsiveHeader() {
                 </div>
                 <div className="ml-3">
                   <h1 className="text-xl lg:text-2xl font-bold text-white bg-clip-text">
-                    i-Tech
+                    i-Tech System
                   </h1>
                 </div>
               </a>
