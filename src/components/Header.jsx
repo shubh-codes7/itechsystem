@@ -1,12 +1,24 @@
+'use client'
+
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Phone, Mail, MapPin, Code, Users, Briefcase, Settings, FolderOpen, Cpu, Home, User, GraduationCap } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, Mail, MapPin, Code, Users, Briefcase, Settings, FolderOpen, Cpu, Home, User, GraduationCap, Filter } from 'lucide-react';
 
 export default function ResponsiveHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+
   const navigationItems = [
+    { 
+      name: 'Home', 
+      href: '/', 
+      icon: Home,
+      hasDropdown: false 
+    },
     { 
       name: 'About', 
       href: '/about', 
@@ -62,6 +74,14 @@ export default function ResponsiveHeader() {
       icon: Phone,
       hasDropdown: false 
     }
+  ];
+
+  const categories = [
+    { id: "all", name: "All", icon: Filter },
+    { id: "batch", name: "Full Stack Development", icon: Code },
+    { id: "workshop", name: "Design", icon: Users },
+    { id: "webinar", name: "Languages", icon: Filter },
+    { id: "bootcamp", name: "ERP & CRM", icon: Filter },
   ];
 
   useEffect(() => {
@@ -136,7 +156,7 @@ export default function ResponsiveHeader() {
                   >
                     <a
                       href={item.href}
-                      className="flex items-center px-3 py-2 text-white hover:text-blue-600 font-medium transition-all duration-300 group relative"
+                      className="flex items-center px-1 py-2 text-white hover:text-blue-600 font-medium transition-all duration-300 group relative"
                     >
                       <IconComponent className="w-4 h-4 mr-2 opacity-70 group-hover:opacity-100" />
                       {item.name}
@@ -151,13 +171,14 @@ export default function ResponsiveHeader() {
                     {/* Dropdown Menu */}
                     {item.hasDropdown && (
                       <div
-                        className={`absolute top-full left-0 mt-2  w-[50vw] bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-200/50 overflow-hidden transition-all duration-300 ${
+                        className={`absolute top-full left-20 mt-2  w-[70vw] bg-white/95 backdrop-blur-xl rounded-xl shadow-xl border border-gray-200/50 overflow-hidden transition-all duration-300 ${
                           activeDropdown === item.name
                             ? 'opacity-100 translate-y-0 visible'
                             : 'opacity-0 translate-y-2 invisible'
                         }`}
                       >
-                        <div className="p-2 grid grid-cols-2 gap-2">
+                        
+                        <div className="p-2 grid grid-cols-4 gap-2">
                           {item.dropdownItems.map((dropdownItem, index) => (
                             <div className='flex '>
                               <img 

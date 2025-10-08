@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { TrendingUp, Users, Award, ArrowRight } from "lucide-react"
 import heroImage from "@/../public/images/Hero_section_background_image_9af6e1b6.png"
 import Image from "next/image"
+import ModalForm from "../ModalForm"
 
 
 
@@ -16,7 +17,7 @@ export default function HeroSection({ onDemoClick, title, subheading }) {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{backgroundImage: `url(${heroImage})`}}>
+    <section className="relative h-[90vh] max-h-screen flex items-center justify-center overflow-hidden" style={{backgroundImage: `url(${heroImage})`}}>
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image src={heroImage} alt="Professional coding environment" fill style={{objectFit: "cover"}} priority/>
@@ -68,14 +69,8 @@ export default function HeroSection({ onDemoClick, title, subheading }) {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8 py-6 h-auto"
-              onClick={handleOpenForm}
-            >
-              Book Free Demo
-            </Button>
+            
+            <ModalForm className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8 py-6 h-auto"/>
           </div>
         </div>
       </div>

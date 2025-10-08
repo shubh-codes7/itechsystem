@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-bold font-[dominique] text-primary mb-4" >
-              I-Tech Systems
+              I-Tech System
             </h3>
             <p className="text-white mb-4">
               Transforming careers through comprehensive full stack development education. 
@@ -43,7 +43,7 @@ export default function Footer() {
               <div className="flex items-center">
                 <Phone className="w-4 h-4 mr-3 text-white flex-shrink-0" />
                 <a href="tel:+919876543210" className="text-white/90">
-                  <span>9422248005, 9834975865</span>
+                  <span>9834975865, 9422248005</span>
                 </a>
               </div>
               <div className="flex items-center">
@@ -73,7 +73,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-wrap gap-4 text-sm text-white md:justify-end">
               <a 
-                href="/privacy"
+                href="/privacy-policy"
                 className="hover:text-foreground transition-colors" >
                 Privacy Policy
               </a>

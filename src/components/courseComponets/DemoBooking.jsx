@@ -36,7 +36,6 @@ export default function DemoBooking() {
     experience: ""
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  // const { toast } = useToast()
 
   const handleSlotSelect = (slotId) => {
     setSelectedSlot(slotId)
@@ -187,7 +186,7 @@ export default function DemoBooking() {
             <CardHeader>
               <CardTitle className="text-2xl flex items-center" data-testid="text-form-title">
                 <User className="w-6 h-6 mr-2" />
-                Book Your Free Demo
+                Get in touch
               </CardTitle>
               {selectedSlotData && (
                 <div className="text-sm text-muted-foreground p-3 bg-muted rounded-md" data-testid="div-selected-slot">
@@ -199,7 +198,7 @@ export default function DemoBooking() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="name">Full Name *</Label>
+                    <Label htmlFor="name">Name *</Label>
                     <Input
                       id="name"
                       type="text"
@@ -238,11 +237,11 @@ export default function DemoBooking() {
                 </div>
 
                 <div>
-                  <Label htmlFor="experience">Current Experience Level</Label>
+                  <Label htmlFor="experience">Subject</Label>
                   <Input
-                    id="experience"
+                    id="subject"
                     type="text"
-                    placeholder="e.g., Beginner, Student, 2 years in IT"
+                    placeholder="Do we get placement assistance?"
                     value={formData.experience}
                     onChange={(e) => handleInputChange('experience', e.target.value)}
                     data-testid="input-experience"
@@ -253,8 +252,6 @@ export default function DemoBooking() {
                   type="submit"
                   size="lg"
                   className="w-full"
-                  disabled={!selectedSlot || !formData.name || !formData.email || !formData.phone || isSubmitting}
-                  data-testid="button-submit-demo"
                 >
                   {isSubmitting ? (
                     <>
@@ -272,12 +269,12 @@ export default function DemoBooking() {
                 <div className="text-center">
                   <p className="text-sm text-muted-foreground">
                     Need help? <br />
-                    <a href="tel:+919876543210" className="text-primary hover:underline">
+                    <a href="tel:+919834975865" className="text-primary hover:underline">
                       <Phone className="w-4 h-4 inline mr-1" />
-                      +91 98765 43210
+                      +91 9834975865
                     </a>
                     {" or "}
-                    <a href="mailto:info@example.com" className="text-primary hover:underline">
+                    <a href="mailto:info@itechnasik.com" className="text-primary hover:underline">
                       <Mail className="w-4 h-4 inline mr-1" />
                       Email Us
                     </a>

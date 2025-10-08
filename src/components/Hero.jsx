@@ -3,6 +3,7 @@ import { ChevronRight, Code, Play, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import Link from "next/link";
+import ModalForm from "./ModalForm";
 
 export default function Hero() {
   const [currentSkill, setCurrentSkill] = useState(0);
@@ -82,7 +83,7 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Button><Link href="/courses">Explore Courses</Link></Button>
-              <Button><Link href="/contact">Contact Now</Link></Button>              
+              <ModalForm />            
             </div>
 
             {/* Trust Indicators */}
