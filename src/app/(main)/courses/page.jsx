@@ -11,6 +11,7 @@ export default async function Courses() {
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/courses`)
   const courses = await res.json()
+  console.log(courses);
 
   return (
     <section className=" bg-muted/30">
