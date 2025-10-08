@@ -73,7 +73,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-wrap gap-4 text-sm text-white md:justify-end">
               <a 
-                href="/privacy-policy"
+                href="/privacy"
                 className="hover:text-foreground transition-colors" >
                 Privacy Policy
               </a>
