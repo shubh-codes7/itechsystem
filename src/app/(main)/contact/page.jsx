@@ -17,7 +17,6 @@ export default function Contact() {
               choose the right training program or software solution for your needs."
       />
       <ContactSection />
-      <TrustSection />
       <EnquiryForms />
       <LocationMap />
     </div>

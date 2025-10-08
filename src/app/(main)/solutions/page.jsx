@@ -18,7 +18,7 @@ export default function Solutions() {
       />
       <SoftwareStats />
       <SolutionsGrid />
-      <SolutionsContact />
+      {/* <SolutionsContact /> */}
     </div>
   )
 }

@@ -28,9 +28,21 @@ export default function ModalForm() {
 
   const options = [
     {value: "MERN Stack Development", label: "MERN Stack Development"},
+    {value: "Programming Languages", label: "Programming Languages"},
+    {value: "Data Analytics", label: "Data Analytics"},
+    {value: "Cloud Computing & DevOps", label: "Cloud Computing & DevOps"},
     {value: "MEAN Stack Development", label: "MEAN Stack Development"},
     {value: "Ui/Ux and Graphic Design", label: "Ui/Ux and Graphic Design"},
     {value: "Mobile App Development", label: "Mobile App Development"},
+    {value: "Digital Marketing", label: "Digital Marketing"},
+    {value: "SAP", label: "SAP"},
+    {value: "Software Testing", label: "Software Testing"},
+    {value: "Salesforce", label: "Salesforce"},
+    {value: "DotNET", label: "DotNET"},
+    {value: "Java Full Stack", label: "Java Full Stack"},
+    {value: "PHP Web Development", label: "PHP Web Development"},
+    {value: "Python Development", label: "Python Development"},
+    {value: "Web Development", label: "Web Development"},
   ]
 
   const [form, setForm] = useState({

@@ -464,31 +464,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="container mx-auto px-6">
-          <div className={`text-center text-white transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <GraduationCap className="w-16 h-16 mx-auto mb-6" />
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Ready to Transform Your Career?
-            </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Join thousands of successful graduates who chose i-Tech System for their technology education journey.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
-                Explore Courses
-                <ChevronRight className="ml-2 w-5 h-5" />
-              </button>
-              <button className="px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg font-semibold hover:bg-white/30 transition-all duration-300 flex items-center justify-center">
-                Schedule a Visit
-                <MapPin className="ml-2 w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+     
     </div>
     </>
   );

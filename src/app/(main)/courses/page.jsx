@@ -9,7 +9,7 @@ import Placements from "@/components/Placements"
 
 export default async function Courses() {
 
-  const res = await fetch("/api/courses", { cache: "no-store" });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/courses`)
   const courses = await res.json()
 
   return (

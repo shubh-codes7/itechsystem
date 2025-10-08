@@ -24,9 +24,9 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className=" gap-12">
+        <div className="gap-10">
           {/* Contact Information */}
-          <div className="space-y-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2 grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="p-6 hover-elevate">
               <CardContent className="p-0 flex items-center space-x-4">
                 <div className="bg-primary/10 p-3 rounded-lg">
@@ -34,7 +34,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Phone</h4>
-                  <p className="text-muted-foreground">+91 9422248005, +91 9834975865</p>
+                  <p className="text-muted-foreground">+91 9834975865, +91 9422248005 </p>
                 </div>
               </CardContent>
             </Card>
@@ -65,54 +65,28 @@ export default function ContactSection() {
                 </div>
               </CardContent>
             </Card>
-
+            
             <Card className="p-6 hover-elevate">
               <CardContent className="p-0 flex items-center space-x-4">
-                <div className="bg-chart-4/10 p-3 rounded-lg">
-                  <Clock className="w-6 h-6 text-chart-4" />
+                <div className="bg-chart-3/10 p-3 rounded-lg">
+                  <Clock className="w-6 h-6 text-chart-3" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Business Hours</h4>
                   <p className="text-muted-foreground">
-                    Mon - Fri: 8:00 AM - 8:00 PM<br />
+                    Mon - Fri: 8:00 AM - 8:00 PM <br/>
                     Sat: 8:00 AM - 5:00 PM
                   </p>
                 </div>
               </CardContent>
             </Card>
+
           </div>
 
           
 
         </div>
-        {/* Success Metrics */}
-        <Card className="mt-6 p-6 bg-secondary/5 border-secondary/20">
-          <CardContent className="p-0">
-            <h4 className="font-semibold mb-4 text-center" data-testid="text-success-title">
-              Why Choose I-Tech Systems?
-            </h4>
-            <div className="grid grid-cols-3 gap-4 text-center">
-              <div>
-                <div className="text-2xl font-bold text-secondary mb-1" data-testid="text-metric-industry">
-                  100%
-                </div>
-                <div className="text-xs text-muted-foreground">Industry Expert Faculty</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-secondary mb-1" data-testid="text-metric-practical">
-                  80%
-                </div>
-                <div className="text-xs text-muted-foreground">Hands-on Training</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-secondary mb-1" data-testid="text-metric-support">
-                  24/7
-                </div>
-                <div className="text-xs text-muted-foreground">Learning Support</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        
       </div>
     </section>
   );
