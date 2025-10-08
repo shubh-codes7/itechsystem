@@ -3,7 +3,7 @@ import { connectDB } from "@/lib/dbConnect.js"
 import Course from "@/models/Course.js"
 
 export async function GET(request, { params }) {
-  const {slug} = params
+  const {slug} = await params
   try {
     await connectDB();
     const course = await Course.findOne({slug});
