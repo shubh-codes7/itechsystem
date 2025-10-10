@@ -9,16 +9,6 @@ import { Badge } from "@/components/ui/badge"
 // import { useToast } from "@/hooks/use-toast"
 import { Calendar, Clock, Users, Phone, Mail, User, CheckCircle } from "lucide-react"
 
-
-const availableSlots = [
-  { id: "1", date: "2024-01-15", time: "10:00 AM", available: 3 },
-  { id: "2", date: "2024-01-15", time: "2:00 PM", available: 5 },
-  { id: "3", date: "2024-01-16", time: "11:00 AM", available: 2 },
-  { id: "4", date: "2024-01-16", time: "4:00 PM", available: 4 },
-  { id: "5", date: "2024-01-17", time: "10:00 AM", available: 6 },
-  { id: "6", date: "2024-01-17", time: "3:00 PM", available: 1 }
-]
-
 const benefits = [
   "Live coding demonstration",
   "Career guidance session", 
@@ -36,11 +26,6 @@ export default function DemoBooking() {
     experience: ""
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const handleSlotSelect = (slotId) => {
-    setSelectedSlot(slotId)
-    console.log('Demo slot selected:', slotId)
-  }
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }))
@@ -102,7 +87,6 @@ export default function DemoBooking() {
     }
   }
 
-  const selectedSlotData = availableSlots.find(slot => slot.id === selectedSlot)
 
   return (
     <section className="py-24 bg-background">
@@ -133,7 +117,7 @@ export default function DemoBooking() {
             </div>
 
             {/* Available Slots */}
-            <div className="mb-8">
+            {/* <div className="mb-8">
               <h4 className="text-lg font-semibold mb-4 flex items-center" data-testid="text-slots-title">
                 <Calendar className="w-5 h-5 mr-2" />
                 Available Demo Slots
@@ -178,7 +162,7 @@ export default function DemoBooking() {
                   </Card>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Booking Form */}
@@ -188,11 +172,7 @@ export default function DemoBooking() {
                 <User className="w-6 h-6 mr-2" />
                 Get in touch
               </CardTitle>
-              {selectedSlotData && (
-                <div className="text-sm text-muted-foreground p-3 bg-muted rounded-md" data-testid="div-selected-slot">
-                  <strong>Selected Slot:</strong> {new Date(selectedSlotData.date).toLocaleDateString()} at {selectedSlotData.time}
-                </div>
-              )}
+              
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -206,7 +186,6 @@ export default function DemoBooking() {
                       value={formData.name}
                       onChange={(e) => handleInputChange('name', e.target.value)}
                       required
-                      data-testid="input-name"
                     />
                   </div>
                   <div>

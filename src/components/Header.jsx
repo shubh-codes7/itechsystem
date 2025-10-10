@@ -52,15 +52,16 @@ export default function ResponsiveHeader() {
           title: "Full Stack Development",
           courses: [
             {
+              name: "Java Full Stack",
+              href: "/courses/java-dev",
+              icon: "https://img.icons8.com/?size=100&id=90519&format=png&color=000000",
+            },
+            {
               name: "MERN Stack Development",
               href: "/courses/mern",
               icon: "https://img.icons8.com/?size=100&id=VHCVqzF1sqU9&format=png&color=000000",
             },
-            {
-              name: "MEAN Stack Development",
-              href: "/courses/mean",
-              icon: "https://img.icons8.com/?size=100&id=102562&format=png&color=000000",
-            },
+            
             {
               name: "Python Development",
               href: "/courses/python-dev",
@@ -72,9 +73,9 @@ export default function ResponsiveHeader() {
               icon: "https://img.icons8.com/?size=100&id=f0R4xVI4Sc8O&format=png&color=000000",
             },
             {
-              name: "Java Full Stack",
-              href: "/courses/java-dev",
-              icon: "https://img.icons8.com/?size=100&id=90519&format=png&color=000000",
+              name: "MEAN Stack Development",
+              href: "/courses/mean",
+              icon: "https://img.icons8.com/?size=100&id=102562&format=png&color=000000",
             },
             {
               name: "DotNET",
@@ -87,9 +88,24 @@ export default function ResponsiveHeader() {
           title: "Programming Languages",
           courses: [
             {
-              name: "Programming",
+              name: "Diploma in Programming Languages",
               href: "/courses/programming",
               icon: "https://img.icons8.com/?size=100&id=19294&format=png&color=000000",
+            },
+            {
+              name: "C/C++ Programming",
+              href: "/courses/cpp",
+              icon: "https://img.icons8.com/?size=100&id=40669&format=png&color=000000",
+            },
+            {
+              name: "Java Programming",
+              href: "/courses/java",
+              icon: "https://img.icons8.com/?size=100&id=Pd2x9GWu9ovX&format=png&color=000000",
+            },
+            {
+              name: "Python Programming",
+              href: "/courses/python",
+              icon: "https://img.icons8.com/?size=100&id=13441&format=png&color=000000",
             },
           ],
         },
@@ -210,7 +226,7 @@ export default function ResponsiveHeader() {
 
                 <div className="ml-3 flex-1">
                   <h1 className="text-xl lg:text-2xl font-semibold text-white bg-clip-text">
-                    i-Tech System
+                    I-Tech System
                   </h1>
                 </div>
               </a>

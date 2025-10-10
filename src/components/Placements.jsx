@@ -12,100 +12,17 @@ export default function Placements() {
   const placedStudents = [
     {
       id: 1,
-      name: "Rahul Sharma",
-      role: "Full Stack Developer",
-      company: "TCS",
-      salary: "8 LPA",
-      course: "Full Stack Development",
-      passoutYear: "2024",
-      location: "Bangalore",
-      linkedin: "https://linkedin.com/in/rahul-sharma",
-      github: "https://github.com/rahulsharma"
+      name: "Rishikesh Aher",
+      role: "Network Support",
+      company: "Calibers Infotech",
     },
     {
       id: 2,
-      name: "Priya Patel",
-      role: "Software Engineer",
-      company: "Infosys",
-      salary: "7.5 LPA",
-      course: "Java Development",
-      passoutYear: "2024",
-      location: "Pune",
-      linkedin: "https://linkedin.com/in/priya-patel",
-      github: "https://github.com/priyapatel"
+      name: "Aarti Magar",
+      role: "Software Developer",
+      company: "Application Square Infotech",
     },
-    {
-      id: 3,
-      name: "Arjun Kumar",
-      role: "Android Developer",
-      company: "Wipro",
-      salary: "9 LPA",
-      course: "Mobile App Development",
-      passoutYear: "2024",
-      location: "Chennai",
-      linkedin: "https://linkedin.com/in/arjun-kumar",
-      github: "https://github.com/arjunkumar"
-    },
-    {
-      id: 4,
-      name: "Sneha Reddy",
-      role: "QA Engineer",
-      company: "Cognizant",
-      salary: "6.5 LPA",
-      course: "Software Testing",
-      passoutYear: "2024",
-      location: "Hyderabad",
-      linkedin: "https://linkedin.com/in/sneha-reddy",
-      github: "https://github.com/snehareddy"
-    },
-    {
-      id: 5,
-      name: "Vikash Singh",
-      role: "DevOps Engineer",
-      company: "HCL Technologies",
-      salary: "10 LPA",
-      course: "Cloud Computing",
-      passoutYear: "2024",
-      location: "Noida",
-      linkedin: "https://linkedin.com/in/vikash-singh",
-      github: "https://github.com/vikashsingh"
-    },
-    {
-      id: 6,
-      name: "Ananya Gupta",
-      role: "Frontend Developer",
-      company: "Tech Mahindra",
-      salary: "7 LPA",
-      course: "React Development",
-      passoutYear: "2024",
-      location: "Mumbai",
-      linkedin: "https://linkedin.com/in/ananya-gupta",
-      github: "https://github.com/ananyagupta"
-    },
-    {
-      id: 7,
-      name: "Karthik Rajan",
-      role: "Data Analyst",
-      company: "Mindtree",
-      salary: "8.5 LPA",
-      course: "Data Science",
-      passoutYear: "2024",
-      location: "Bangalore",
-      linkedin: "https://linkedin.com/in/karthik-rajan",
-      github: "https://github.com/karthikrajan"
-    },
-    {
-      id: 8,
-      name: "Deepika Rao",
-      role: "UI/UX Designer",
-      company: "Capgemini",
-      salary: "6 LPA",
-      course: "Digital Marketing",
-      passoutYear: "2024",
-      location: "Pune",
-      linkedin: "https://linkedin.com/in/deepika-rao",
-      github: "https://github.com/deepikarao"
-    }
+
   ];
 
   // Duplicate the array for seamless looping
@@ -151,59 +68,25 @@ export default function Placements() {
             {duplicatedStudents.map((student, index) => (
               <Card 
                 key={`${student.id}-${index}`}
-                className="flex-shrink-0 w-80 hover-elevate transition-all duration-300 bg-gradient-to-r from-primary/5 to-secondary/5"
+                className="flex-shrink-0 min-w-fit hover-elevate transition-all duration-300 bg-gradient-to-r from-primary/5 to-secondary/5"
               >
                 <CardContent className="px-6">
                   {/* Student Header */}
-                  <div className="mb-4">
-                    <div className="flex items-center justify-between gap-2 mb-1">
-                      <h3 className="font-bold text-lg text-black" >
+                    <div className="mb-2">
+                      <h3 className="font-bold text-lg text-center text-black" >
                         {student.name}
                       </h3>
-
-                      <div className="flex gap-2">
-                        <button
-                        onClick={() => handleSocialClick(student.linkedin, 'LinkedIn')}
-                        className="text-blue-600 hover:text-blue-800 transition-colors"
-                        title="LinkedIn Profile"
-                        >
-                          <Linkedin className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => handleSocialClick(student.github, 'GitHub')}
-                          className="text-gray-700 hover:text-gray-900 transition-colors"
-                          title="GitHub Profile"
-                        >
-                          <Github className="w-4 h-4" />
-                        </button>
-                      </div>
-                      
-                    </div>
-                    <p className="text-sm text-muted-foreground">{student.role}</p>
-                  </div>
-
-                  {/* Company & Salary */}
-                  <div className="mb-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <Badge className="bg-secondary/10 text-secondary border-secondary/20">
+                      <Badge className="bg-secondary/10 mx-auto block mt-2 text-secondary border-secondary/20">
                         {student.company}
-                      </Badge>
-                      
+                    </Badge>
                     </div>
-                    <div className="text-sm text-muted-foreground space-y-1">
-                      <div className="flex items-center">
-                        <MapPin className="w-4 h-4 mr-2" />
-                        {student.location}
-                      </div>
-                      <div className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-2" />
-                        Batch {student.passoutYear}
-                      </div>
-                    </div>
-                  </div>
+                    
 
                   {/* Course */}
                   <div>
+                    <p className="text-sm text-muted-foreground">
+                      <strong>Company:</strong> {student.role}
+                    </p>
                     <p className="text-sm text-muted-foreground">
                       <strong>Course:</strong> {student.course}
                     </p>

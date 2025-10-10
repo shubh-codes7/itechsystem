@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { X, Plus } from "lucide-react";
 
@@ -13,6 +20,7 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     slug: initialData?.slug || "",
     title: initialData?.title || "",
+    category: initialData?.category || "",
     image: initialData?.image || "",
     icon: initialData?.icon || "",
     description: initialData?.description || "",
@@ -25,57 +33,55 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
   const [newTechnology, setNewTechnology] = useState("");
   const [newModule, setNewModule] = useState({
     title: "",
-    duration: "",
     topics: [],
     projects: 0,
   });
   const [newModuleTopic, setNewModuleTopic] = useState("");
   const [newTool, setNewTool] = useState({
     name: "",
-    icon: ""
+    icon: "",
   });
 
   const handleImageUpload = async (e, field) => {
-  const file = e.target.files?.[0];
-  if (!file) return;
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-  // Step 1: Show local preview
-  const reader = new FileReader();
-  reader.onloadend = () => {
-    setFormData(prev => ({ ...prev, [field]: reader.result })); // preview
+    // Step 1: Show local preview
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFormData((prev) => ({ ...prev, [field]: reader.result })); // preview
+    };
+    reader.readAsDataURL(file);
+
+    // Step 2: Upload to Cloudinary
+    const formDataCloudinary = new FormData();
+    formDataCloudinary.append("file", file);
+    formDataCloudinary.append("upload_preset", "images");
+
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dseumoebk/image/upload",
+        {
+          method: "POST",
+          body: formDataCloudinary,
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+
+      // Step 3: Replace preview with hosted URL
+      setFormData((prev) => ({ ...prev, [field]: data.secure_url }));
+    } catch (err) {
+      console.error("Upload failed", err);
+    }
   };
-  reader.readAsDataURL(file);
-
-  // Step 2: Upload to Cloudinary
-  const formDataCloudinary = new FormData();
-  formDataCloudinary.append("file", file);
-  formDataCloudinary.append("upload_preset", "images"); 
-
-  try {
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dseumoebk/image/upload",
-      {
-        method: "POST",
-        body: formDataCloudinary,
-      }
-    );
-    const data = await res.json();
-    console.log(data);
-
-    // Step 3: Replace preview with hosted URL
-    setFormData(prev => ({ ...prev, [field]: data.secure_url }));
-  } catch (err) {
-    console.error("Upload failed", err);
-  }
-};
-
 
   const handleToolIconUpload = (e) => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setNewTool(prev => ({ ...prev, icon: reader.result }));
+        setNewTool((prev) => ({ ...prev, icon: reader.result }));
       };
       reader.readAsDataURL(file);
     }
@@ -83,70 +89,69 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
 
   const addTechnology = () => {
     if (newTechnology.trim()) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        technologies: [...prev.technologies, newTechnology.trim()]
+        technologies: [...prev.technologies, newTechnology.trim()],
       }));
       setNewTechnology("");
     }
   };
 
   const removeTechnology = (index) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      technologies: prev.technologies.filter((_, i) => i !== index)
+      technologies: prev.technologies.filter((_, i) => i !== index),
     }));
   };
 
   const addModuleTopic = () => {
     if (newModuleTopic.trim()) {
-      setNewModule(prev => ({
+      setNewModule((prev) => ({
         ...prev,
-        topics: [...prev.topics, newModuleTopic.trim()]
+        topics: [...prev.topics, newModuleTopic.trim()],
       }));
       setNewModuleTopic("");
     }
   };
 
   const removeModuleTopic = (index) => {
-    setNewModule(prev => ({
+    setNewModule((prev) => ({
       ...prev,
-      topics: prev.topics.filter((_, i) => i !== index)
+      topics: prev.topics.filter((_, i) => i !== index),
     }));
   };
 
-
   const addModule = () => {
     if (newModule.title.trim()) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        modules: [...prev.modules, newModule]
+        modules: [...prev.modules, newModule],
       }));
       setNewModule({ title: "", duration: "", topics: [], projects: 0 });
     }
   };
 
   const removeModule = (index) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      modules: prev.modules.filter((_, i) => i !== index)
+      modules: prev.modules.filter((_, i) => i !== index),
     }));
   };
 
   const addTool = () => {
     if (newTool.name.trim()) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        tools: [...prev.tools, newTool]
+        tools: [...prev.tools, newTool],
       }));
-      setNewTool({ name: "", icon: ""});
+      setNewTool({ name: "", icon: "" });
     }
   };
 
   const removeTool = (index) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      tools: prev.tools.filter((_, i) => i !== index)
+      tools: prev.tools.filter((_, i) => i !== index),
     }));
   };
 
@@ -168,9 +173,10 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
               <Input
                 id="title"
                 value={formData.title}
-                onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, title: e.target.value }))
+                }
                 required
-                
               />
             </div>
             <div>
@@ -178,65 +184,109 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
               <Input
                 id="slug"
                 value={formData.slug}
-                onChange={(e) => setFormData(prev => ({ ...prev, slug: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, slug: e.target.value }))
+                }
                 required
               />
             </div>
+
             <div>
               <Label htmlFor="image">Image Link</Label>
               <Input
                 id="image"
                 value={formData.image}
-                onChange={(e) => setFormData(prev => ({ ...prev, image: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, image: e.target.value }))
+                }
                 required
               />
               <Input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleImageUpload(e, 'image')}
-                  className="cursor-pointer"
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleImageUpload(e, "image")}
+                className="cursor-pointer"
+              />
+              {formData.image && (
+                <img
+                  src={formData.image}
+                  alt="Preview"
+                  className="w-full h-32 object-cover rounded border"
                 />
-                {formData.image && (
-                  <img src={formData.image} alt="Preview" className="w-full h-32 object-cover rounded border" />
-                )}
+              )}
             </div>
             <div>
               <Label htmlFor="icon">Icon Link</Label>
               <Input
                 id="icon"
                 value={formData.icon}
-                onChange={(e) => setFormData(prev => ({ ...prev, icon: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, icon: e.target.value }))
+                }
                 placeholder="Enter URL or upload file"
                 required
               />
               <Input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleImageUpload(e, 'icon')}
-                  className="cursor-pointer"
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleImageUpload(e, "icon")}
+                className="cursor-pointer"
+              />
+              {formData.icon && (
+                <img
+                  src={formData.icon}
+                  alt="Icon Preview"
+                  className="w-16 h-16 object-cover rounded border"
                 />
-                {formData.icon && (
-                  <img src={formData.icon} alt="Icon Preview" className="w-16 h-16 object-cover rounded border" />
-                )}
+              )}
             </div>
           </div>
-          
+
+          <div>
+            <Label htmlFor="category">Category</Label>
+            <Select 
+              id="category" 
+              value={formData.category} 
+              onValueChange={(value) => setFormData((prev) => ({ ...prev, category: value }))}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="fullstack">Full Stack</SelectItem>
+                <SelectItem value="programming">Programming</SelectItem>
+                <SelectItem value="data">Data</SelectItem>
+                <SelectItem value="other">Other</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
           <div>
             <Label htmlFor="description">Description</Label>
             <Textarea
               id="description"
               value={formData.description}
-              onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  description: e.target.value,
+                }))
+              }
               data-testid="input-description"
             />
           </div>
-          
+
           <div>
             <Label htmlFor="why">Why take this course? (max 250 chars)</Label>
             <Textarea
               id="why"
               value={formData.why}
-              onChange={(e) => setFormData(prev => ({ ...prev, why: e.target.value.slice(0, 250) }))}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  why: e.target.value.slice(0, 250),
+                }))
+              }
               maxLength={250}
               data-testid="input-why"
             />
@@ -246,9 +296,6 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
           </div>
         </CardContent>
       </Card>
-
-      
-
 
       <Card>
         <CardHeader>
@@ -263,21 +310,13 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
                   id="module-title"
                   placeholder="e.g., C Fundamentals"
                   value={newModule.title}
-                  onChange={(e) => setNewModule(prev => ({ ...prev, title: e.target.value }))}
+                  onChange={(e) =>
+                    setNewModule((prev) => ({ ...prev, title: e.target.value }))
+                  }
                 />
               </div>
-              <div>
-                <Label htmlFor="module-duration">Duration</Label>
-                <Input
-                  id="module-duration"
-                  placeholder="e.g., 4 weeks"
-                  value={newModule.duration}
-                  onChange={(e) => setNewModule(prev => ({ ...prev, duration: e.target.value }))}
-                />
-              </div>
-            </div>
 
-            <div>
+              <div>
               <Label htmlFor="module-projects">Number of Projects</Label>
               <Input
                 id="module-projects"
@@ -285,9 +324,17 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
                 min="0"
                 placeholder="e.g., 2"
                 value={newModule.projects}
-                onChange={(e) => setNewModule(prev => ({ ...prev, projects: parseInt(e.target.value) || 0 }))}
+                onChange={(e) =>
+                  setNewModule((prev) => ({
+                    ...prev,
+                    projects: parseInt(e.target.value) || 0,
+                  }))
+                }
               />
             </div>
+            </div>
+
+            
 
             <div>
               <Label>Topics</Label>
@@ -296,7 +343,9 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
                   placeholder="Add topic"
                   value={newModuleTopic}
                   onChange={(e) => setNewModuleTopic(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addModuleTopic())}
+                  onKeyPress={(e) =>
+                    e.key === "Enter" && (e.preventDefault(), addModuleTopic())
+                  }
                 />
                 <Button type="button" onClick={addModuleTopic}>
                   <Plus className="h-4 w-4" />
@@ -304,7 +353,11 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
               </div>
               <div className="flex flex-wrap gap-2">
                 {newModule.topics.map((topic, index) => (
-                  <Badge key={index} variant="outline" className="flex items-center gap-1">
+                  <Badge
+                    key={index}
+                    variant="outline"
+                    className="flex items-center gap-1"
+                  >
                     {topic}
                     <Button
                       type="button"
@@ -333,11 +386,16 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
                     <div className="flex-1">
                       <h4 className="font-semibold">{module.title}</h4>
                       <p className="text-sm text-muted-foreground">
-                        {module.duration} • {module.projects} project{module.projects !== 1 ? 's' : ''}
+                        {module.duration} • {module.projects} project
+                        {module.projects !== 1 ? "s" : ""}
                       </p>
                       <div className="flex flex-wrap gap-1 mt-2">
                         {module.topics.map((topic, i) => (
-                          <Badge key={i} variant="secondary" className="text-xs">
+                          <Badge
+                            key={i}
+                            variant="secondary"
+                            className="text-xs"
+                          >
                             {topic}
                           </Badge>
                         ))}
@@ -359,11 +417,12 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
         </CardContent>
       </Card>
 
-
       <Card>
         <CardHeader>
           <CardTitle>Tools</CardTitle>
-          <span className="text-xs mb-2">Use http://icons8.com/icons to get icons url</span>
+          <span className="text-xs mb-2">
+            Use http://icons8.com/icons to get icons url
+          </span>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="border rounded-lg p-4 space-y-4 bg-muted/30">
@@ -374,7 +433,9 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
                   id="tool-name"
                   placeholder="e.g., Power Bi"
                   value={newTool.name}
-                  onChange={(e) => setNewTool(prev => ({ ...prev, name: e.target.value }))}
+                  onChange={(e) =>
+                    setNewTool((prev) => ({ ...prev, name: e.target.value }))
+                  }
                 />
               </div>
               <div>
@@ -383,7 +444,9 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
                   id="tool-icon"
                   placeholder="e.g., http://icon8-powerbi.com"
                   value={newTool.icon}
-                  onChange={(e) => setNewTool(prev => ({ ...prev, icon: e.target.value }))}
+                  onChange={(e) =>
+                    setNewTool((prev) => ({ ...prev, icon: e.target.value }))
+                  }
                 />
               </div>
             </div>
@@ -400,7 +463,11 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       {tool.icon && (
-                        <img src={tool.icon} alt={tool.name} className="w-8 h-8" />
+                        <img
+                          src={tool.icon}
+                          alt={tool.name}
+                          className="w-8 h-8"
+                        />
                       )}
                       <span className="font-medium">{tool.name}</span>
                     </div>
@@ -420,12 +487,15 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
         </CardContent>
       </Card>
 
-
       {/* Tags: This tags are visible in course cards as badges */}
       <Card>
         <CardHeader>
           <CardTitle>Tags</CardTitle>
-          <span className="text-xs mb-2">Tags are important, They are displayed on each card. add the concepts, important tools, frameworks, languages taught in this course.</span>
+          <span className="text-xs mb-2">
+            Tags are important, They are displayed on each card. add the
+            concepts, important tools, frameworks, languages taught in this
+            course.
+          </span>
         </CardHeader>
         <CardContent>
           <div className="flex gap-2 mb-4">
@@ -433,17 +503,23 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
               placeholder="Add Tags"
               value={newTechnology}
               onChange={(e) => setNewTechnology(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTechnology())}
+              onKeyPress={(e) =>
+                e.key === "Enter" && (e.preventDefault(), addTechnology())
+              }
               data-testid="input-new-technology"
             />
             <Button type="button" onClick={addTechnology}>
               <Plus className="h-4 w-4" />
             </Button>
           </div>
-          
+
           <div className="flex flex-wrap gap-2">
             {formData.technologies.map((tech, index) => (
-              <Badge key={index} variant="secondary" className="flex items-center gap-1">
+              <Badge
+                key={index}
+                variant="secondary"
+                className="flex items-center gap-1"
+              >
                 {tech}
                 <Button
                   type="button"

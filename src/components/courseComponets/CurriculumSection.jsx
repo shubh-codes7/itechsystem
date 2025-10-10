@@ -80,15 +80,7 @@ export default function CurriculumSection({title, modules, tools, why}) {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             {why}
           </p>
-          <Button 
-            variant="outline" 
-            onClick={handleDownloadSyllabus}
-            data-testid="button-download-syllabus"
-            className="hover-elevate"
-          >
-            <Download className="w-4 h-4 mr-2" />
-            Download Full Syllabus
-          </Button>
+          
         </div>
 
         {/* Course Modules */}
@@ -133,7 +125,7 @@ export default function CurriculumSection({title, modules, tools, why}) {
         </div>
 
         {/* Tools & Technologies */}
-        <div className="mb-16">
+        {tools.length > 0 && <div className="mb-16">
           <h3 className="text-2xl font-bold text-center mb-8" data-testid="text-tools-title">
             What You'll Master
           </h3>
@@ -150,7 +142,7 @@ export default function CurriculumSection({title, modules, tools, why}) {
               </Card>
             ))}
           </div>
-        </div>
+        </div>}
 
         {/* Additional Offerings */}
         <div>

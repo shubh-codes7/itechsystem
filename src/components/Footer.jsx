@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, Send } from "lucide-react"
+import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, Send, FacebookIcon, TwitterIcon } from "lucide-react"
 
 export default function Footer() {
 
@@ -30,6 +30,18 @@ export default function Footer() {
                 className="p-2 rounded-lg bg-background hover-elevate transition-all duration-200"
               >
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="#"
+                className="p-2 rounded-lg bg-background hover-elevate transition-all duration-200"
+              >
+                <FacebookIcon className="w-5 h-5" />
+              </a>
+              <a 
+                href="#"
+                className="p-2 rounded-lg bg-background hover-elevate transition-all duration-200"
+              >
+                <TwitterIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -95,7 +107,7 @@ export default function Footer() {
         <Card className="mt-8 bg-card border-card-border">
           <CardContent className="p-6 text-center">
             <h4 className="font-semibold mb-3" >
-              Trusted Learning Partner
+              Proudly Associated with
             </h4>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center">

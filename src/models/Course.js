@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const ModuleSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
-    duration: { type: String },
     topics: [String],
     projects: { type: Number },
   },
@@ -21,6 +20,7 @@ const ToolSchema = new mongoose.Schema(
 const CourseSchema = new mongoose.Schema(
   {
     slug: { type: String, required: true, unique: true },
+    category: { type: String, required: true},
     title: { type: String, required: true },
     image: { type: String, required: false},
     icon: { type: String, required: false},

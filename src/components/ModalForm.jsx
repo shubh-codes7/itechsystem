@@ -94,7 +94,7 @@ export default function ModalForm() {
   useEffect(()=>{
     const timer = setTimeout(()=>{
       setOpen(true)
-    }, 9000)
+    }, 30000)
 
     return () =>  clearTimeout(timer)
   }, [])
@@ -152,6 +152,7 @@ export default function ModalForm() {
             <div className="grid gap-3">
               <Label htmlFor="course">Select Course</Label>
               <Select 
+                
                 id="course" 
                 value={form.course} 
                 onValueChange={(value) => setForm((prev) => ({ ...prev, course: value }))}

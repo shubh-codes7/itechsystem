@@ -1,24 +1,12 @@
-"use client";
+import Contact from "./Contact";
 
-import HeroSection from "@/components/HeroSection";
-import EnquiryForms from "./EnquiryForm";
-import LocationMap from "./LocationMap";
-import TrustSection from "./TrustSection";
-import ContactSection from "@/components/ContactSection";
+export const metadata = {
+  title: "Contact I-Tech System – Enroll for IT Training in India",
+  description:
+    "Get in touch with I-Tech System for course information, demo classes, and enrollment guidance. Start your journey in software, data, or cloud training with India’s trusted IT institute.",
+};
 
-export default function Contact() {
-  return (
-    <div>
-      <HeroSection
-        badge="Get In Touch"
-        slug1="Contact"
-        slug2="I-Tech Systems"
-        description="Ready to advance your career or transform your business? Our expert team is here to help you 
-              choose the right training program or software solution for your needs."
-      />
-      <ContactSection />
-      <EnquiryForms />
-      <LocationMap />
-    </div>
-  );
+
+export default function page() {
+  return <Contact />
 }

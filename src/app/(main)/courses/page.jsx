@@ -1,74 +1,32 @@
-// 'use client'
+import CoursesPage from "./Courses";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
-import Link from "next/link"
-import HeroSection from "@/components/HeroSection"
-import Placements from "@/components/Placements"
-
-export default async function Courses() {
-
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/courses`)
-  const res = await fetch("/api/courses", { cache: "no-store" });
-  const courses = await res.json()
-
-  return (
-    <section className=" bg-muted/30">
-      <HeroSection
-        badge="Our Courses"
-        slug1="Industry"
-        slug2="In-Demand Courses"
-        description="Explore our complete catalog of career-focused tech programs. Whether you're into coding, design, data, or cloud—there’s a course here to match your ambition and skill level."
-      />
-      <div className="max-w-7xl py-20 mx-auto px-6">     
-
-        {/* Our Courses */}
-        <div className="mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {courses.length > 0 && courses.map((course, idx) => (
-              <Card key={idx} className="overflow-hidden hover-elevate transition-all duration-200 pt-0">
-                <Link href={`/courses/${course.slug}`}>
-                <div className="aspect-video overflow-hidden">
-                  <Image
-                    src={course.image} 
-                    alt={course.title}
-                    width={100}
-                    height={100}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardHeader>
-                  <div className="flex mt-2 items-center justify-between">
-                    <CardTitle className="text-xl ">
-                      <Link href={`/courses/${course.slug}`}>{course.title}</Link>
-                    </CardTitle>
-                  </div>
-                 
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4">
-                    {course.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {course.technologies.map((tech, index) => (
-                      <Badge key={index} variant="outline">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-                </Link>
-              </Card>
-            ))}
-          </div>
-        </div>
+// app/courses/page.jsx
+export const metadata = {
+  title: "Top IT Training Courses in India",
+  description:
+    "Explore professional IT training courses by I-Tech System — covering Python, Java, Full Stack Development, Data Science, SAP, Salesforce, Cloud Computing, Web Design, and more across India.",
+  keywords:
+    "IT training, software training, programming courses, full stack development, data science, SAP training, Salesforce course, cloud computing course, web development",
+  alternates: {
+    canonical: "https://www.itechsystem.in/courses",
+  },
+  openGraph: {
+    title: "Top IT Training Courses in India | I-Tech System",
+    description:
+      "Join India's leading IT training institute. Learn Python, Java, Web Development, Data Analytics, Cloud, and SAP from experts at I-Tech System.",
+    url: "https://www.itechsystem.in/courses",
+    siteName: "I-Tech System",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Top IT Training Courses in India | I-Tech System",
+    description:
+      "Master in-demand IT skills — Python, Java, Full Stack, Cloud, SAP, Data Analytics — with expert-led courses at I-Tech System.",
+  },
+};
 
 
-        {/* Recent Placements */}
-        <Placements />
-
-      </div>
-    </section>
-  )
+export default function page() {
+  return <CoursesPage />
 }

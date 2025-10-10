@@ -2,6 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import { 
   Hospital, 
   Stethoscope, 
@@ -142,16 +143,14 @@ export default function SolutionsGrid() {
                   </div>
                   
                   <div className="flex gap-3">
+                    <Link href="/contact">
                     <button 
                       className="flex-1 bg-primary text-secondary-foreground px-4 py-2 rounded-md hover-elevate font-medium text-sm"
                     >
                       Request Demo
                     </button>
-                    <button 
-                      className="px-4 py-2 border border-border rounded-md hover-elevate font-medium text-sm"
-                    >
-                      Learn More
-                    </button>
+                    </Link>
+                    
                   </div>
                 </CardContent>
               </Card>

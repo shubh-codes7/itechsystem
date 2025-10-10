@@ -72,28 +72,7 @@ export default function UpcomingBatchesSection() {
       icon: Database,
       gradient: "from-purple-500 to-pink-500",
       tags: ["Python", "TensorFlow", "ML"],
-    },
-    {
-      id: 3,
-      type: "batch",
-      category: "Cloud Computing",
-      title: "AWS Solutions Architect",
-      description:
-        "Prepare for AWS certification while building scalable cloud solutions.",
-      startDate: "2025-10-22",
-      duration: "12 weeks",
-      time: "7:00 PM - 10:00 PM",
-      mode: "Online",
-      price: "₹3,000",
-      instructor: "Amit Singh",
-      rating: 4.9,
-      enrolled: 15,
-      maxCapacity: 20,
-      level: "Intermediate",
-      icon: Cloud,
-      gradient: "from-green-500 to-teal-500",
-      tags: ["AWS", "Cloud", "DevOps"],
-    },
+    }
   ];
 
   useEffect(() => {
@@ -133,6 +112,10 @@ export default function UpcomingBatchesSection() {
   const getProgressPercentage = (enrolled, maxCapacity) => {
     return (enrolled / maxCapacity) * 100;
   };
+
+  if(upcomingItems.length === 0){
+    return;
+  }
 
   return (
     <section className="p-4 py-20 bg-gradient-to-r from-primary/5 to-secondary/5" >
