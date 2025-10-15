@@ -17,6 +17,14 @@ const ToolSchema = new mongoose.Schema(
   { _id: false }
 );
 
+const SeoSchema = new mongoose.Schema(
+  {
+    title: { type: String },
+    description: { type: String }
+  },
+  { _id: false }
+)
+
 const CourseSchema = new mongoose.Schema(
   {
     slug: { type: String, required: true, unique: true },
@@ -29,6 +37,7 @@ const CourseSchema = new mongoose.Schema(
     modules: [ModuleSchema],
     tools: [ToolSchema],
     technologies: [String],
+    seo: SeoSchema,
   },
   { timestamps: true }
 );

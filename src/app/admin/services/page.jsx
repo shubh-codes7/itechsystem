@@ -1,103 +1,105 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DataTable } from "@/components/DataTable";
+import { ServiceForm } from "./ServiceForm";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-
-// TODO: Remove mock data functionality
-const mockServices = [
-  {
-    id: 1,
-    name: "Career Counseling",
-    description: "One-on-one career guidance and planning sessions",
-    category: "Counseling",
-    duration: "1 hour",
-    price: "$50",
-    status: "Active"
-  },
-  {
-    id: 2,
-    name: "Resume Review",
-    description: "Professional resume review and optimization",
-    category: "Career Services",
-    duration: "30 minutes",
-    price: "$25",
-    status: "Active"
-  },
-  {
-    id: 3,
-    name: "Mock Interviews",
-    description: "Practice interviews with industry professionals",
-    category: "Interview Prep",
-    duration: "45 minutes", 
-    price: "$40",
-    status: "Active"
-  },
-  {
-    id: 4,
-    name: "Portfolio Review",
-    description: "Detailed feedback on student portfolios",
-    category: "Portfolio",
-    duration: "1 hour",
-    price: "$60",
-    status: "Upcoming"
-  },
-  {
-    id: 5,
-    name: "Industry Mentoring",
-    description: "Long-term mentoring with industry experts",
-    category: "Mentoring",
-    duration: "3 months",
-    price: "$300",
-    status: "Active"
-  }
-];
+import axios from "axios";
 
 const columns = [
-  { key: 'name', label: 'Service Name', sortable: true },
+  { key: 'title', label: 'Service Title', sortable: true },
   { key: 'category', label: 'Category', sortable: true },
-  { key: 'duration', label: 'Duration', sortable: false },
-  { key: 'price', label: 'Price', sortable: true },
-  { key: 'status', label: 'Status', sortable: true },
 ];
 
 export default function Services() {
-  const [services, setServices] = useState(mockServices);
+  const [services, setServices] = useState([]);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [editingService, setEditingService] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const fetchServices = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`/api/services`);
+      setServices(res.data);
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      alert('Failed to fetch services');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
 
   const handleAdd = () => {
-    console.log('Add new service triggered');
+    setEditingService(null);
+    setIsFormOpen(true);
   };
 
   const handleEdit = (service) => {
-    console.log('Edit service:', service.name);
+    setEditingService(service);
+    setIsFormOpen(true);
   };
 
-  const handleDelete = (service) => {
-    setServices(services.filter(s => s.id !== service.id));
-    console.log('Delete service:', service.name);
-  };
-
-  const servicesByCategory = services.reduce((acc, service) => {
-    if (!acc[service.category]) {
-      acc[service.category] = [];
+  const handleDelete = async (service) => {
+    if (!confirm(`Are you sure you want to delete "${service.title}"?`)) return;
+    
+    try {
+      setLoading(true);
+      await axios.delete(`/api/services/${service.slug}`);
+      setServices(prev => prev.filter(s => s.slug !== service.slug));
+      alert('Service deleted successfully');
+    } catch (error) {
+      console.error('Error deleting service:', error);
+      alert('Failed to delete service');
+    } finally {
+      setLoading(false);
     }
-    acc[service.category].push(service);
-    return acc;
-  }, {});
+  };
+
+  const handleFormSubmit = async (formData) => {
+    try {
+      setLoading(true);
+      
+      if (editingService) {
+        const res = await axios.put(
+          `/api/services/${editingService.slug}`,
+          formData
+        );
+        setServices(services.map(s => 
+          s.slug === editingService.slug ? res.data : s
+        ));
+        alert('Service updated successfully');
+      } else {
+        const res = await axios.post('/api/services', formData);
+        setServices([res.data, ...services]);
+        alert('Service created successfully');
+      }
+      
+      setIsFormOpen(false);
+      setEditingService(null);
+    } catch (error) {
+      console.error('Error saving service:', error);
+      alert(error.response?.data?.error || 'Failed to save service');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFormCancel = () => {
+    setIsFormOpen(false);
+    setEditingService(null);
+  };
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold" data-testid="text-services-title">Services</h1>
-        <p className="text-muted-foreground">
-          Manage all services offered by your institute.
-        </p>
-      </div>
-
       <Card>
         <CardHeader>
-          <CardTitle>All Services</CardTitle>
+          <CardTitle>Manage Services</CardTitle>
         </CardHeader>
         <CardContent>
           <DataTable
@@ -106,58 +108,25 @@ export default function Services() {
             onAdd={handleAdd}
             onEdit={handleEdit}
             onDelete={handleDelete}
-            addButtonText="Add Service"
+            addButtonText="Add New Service"
           />
         </CardContent>
       </Card>
 
-      <div className="space-y-6">
-        <h2 className="text-2xl font-semibold">Services by Category</h2>
-        
-        {Object.entries(servicesByCategory).map(([category, categoryServices]) => (
-          <Card key={category}>
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between">
-                {category}
-                <Badge variant="outline">{categoryServices.length} services</Badge>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {categoryServices.map((service) => (
-                  <Card key={service.id} className="hover-elevate">
-                    <CardContent className="p-4">
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-start">
-                          <h4 className="font-medium" data-testid={`text-service-name-${service.id}`}>
-                            {service.name}
-                          </h4>
-                          <Badge variant={service.status === 'Active' ? 'default' : 'secondary'}>
-                            {service.status}
-                          </Badge>
-                        </div>
-                        
-                        <p className="text-sm text-muted-foreground">
-                          {service.description}
-                        </p>
-                        
-                        <div className="flex justify-between items-center pt-2">
-                          <span className="text-sm text-muted-foreground">
-                            {service.duration}
-                          </span>
-                          <span className="font-semibold text-primary">
-                            {service.price}
-                          </span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>
+              {editingService ? 'Edit Service' : 'Add New Service'}
+            </DialogTitle>
+          </DialogHeader>
+          <ServiceForm
+            initialData={editingService}
+            onSubmit={handleFormSubmit}
+            onCancel={handleFormCancel}
+          />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

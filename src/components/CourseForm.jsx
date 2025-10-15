@@ -16,7 +16,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { X, Plus } from "lucide-react";
 
-export function CourseForm({ initialData, onSubmit, onCancel }) {
+export function CourseForm({ initialData, onSubmit, onCancel, loading }) {
+
+
   const [formData, setFormData] = useState({
     slug: initialData?.slug || "",
     title: initialData?.title || "",
@@ -28,6 +30,10 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
     modules: initialData?.modules || [],
     tools: initialData?.tools || [],
     technologies: initialData?.technologies || [],
+    seo: initialData?.seo || {
+      title: "",
+      description: ""
+    }
   });
 
   const [newTechnology, setNewTechnology] = useState("");
@@ -262,7 +268,7 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
           </div>
 
           <div>
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">Short Description (10- 15 words)</Label>
             <Textarea
               id="description"
               value={formData.description}
@@ -277,7 +283,7 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
           </div>
 
           <div>
-            <Label htmlFor="why">Why take this course? (max 250 chars)</Label>
+            <Label htmlFor="why">Long Description (20 - 30 words)</Label>
             <Textarea
               id="why"
               value={formData.why}
@@ -288,13 +294,52 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
                 }))
               }
               maxLength={250}
-              data-testid="input-why"
             />
             <p className="text-xs text-muted-foreground mt-1">
               {formData.why.length}/250 characters
             </p>
           </div>
         </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>SEO</CardTitle>
+        </CardHeader>
+        
+        <CardContent className="space-y-4">
+          <div className="border rounded-lg p-4 space-y-4 bg-muted/30">
+            <div className="flex flex-col gap-4">
+              <div>
+                <Label htmlFor="seo-title">Title Tag (50 - 60 char)</Label>
+                <Input
+                  id="seo-title"
+                  placeholder="Best Python Training in India"
+                  value={formData.seo.title}
+                  maxLength="60"
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, seo: {...prev.seo, title: e.target.value} }))
+                  }
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="seo-description">Description Tag (120 - 160 char)</Label>
+                <Textarea
+                  id="seo-description"
+                  value={formData.seo.description}
+                  maxLength={160}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      seo: {...prev.seo, description: e.target.value.slice(0, 160)}
+                    }))
+                  }
+                />
+              </div>
+            </div>
+          </div>
+        </CardContent >
       </Card>
 
       <Card>
@@ -487,7 +532,6 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
         </CardContent>
       </Card>
 
-      {/* Tags: This tags are visible in course cards as badges */}
       <Card>
         <CardHeader>
           <CardTitle>Tags</CardTitle>
@@ -541,8 +585,8 @@ export function CourseForm({ initialData, onSubmit, onCancel }) {
         <Button type="button" variant="outline" onClick={onCancel}>
           Cancel
         </Button>
-        <Button onClick={handleSubmit} type="button">
-          Save Course
+        <Button onClick={handleSubmit} disabled={loading} type="button">
+         {loading ? "Saving Course..." : "Save Course"}
         </Button>
       </div>
     </form>

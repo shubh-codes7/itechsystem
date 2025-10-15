@@ -164,6 +164,7 @@ export default function Courses() {
             initialData={editingCourse}
             onSubmit={handleFormSubmit}
             onCancel={handleFormCancel}
+            loading={loading}
           />
         </DialogContent>
       </Dialog>

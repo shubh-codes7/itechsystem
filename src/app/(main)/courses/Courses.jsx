@@ -39,7 +39,7 @@ export default async function CoursesPage() {
                 <CardHeader>
                   <div className="flex mt-2 items-center justify-between">
                     <CardTitle className="text-xl ">
-                      <Link href={`/courses/${course.slug}`}>{course.title}</Link>
+                      {course.title}
                     </CardTitle>
                   </div>
                  
