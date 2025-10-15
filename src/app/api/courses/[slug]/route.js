@@ -26,7 +26,7 @@ export async function GET(request, { params }) {
 }
 
 export async function PUT(request, { params }) {
-  const {slug} = params
+  const {slug} = await params
   try {
     await connectDB();
     const body = await request.json();
@@ -63,7 +63,7 @@ export async function PUT(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
-  const {slug} = params
+  const {slug} = await params
   try {
     await connectDB();
     const course = await Course.findOneAndDelete({slug});

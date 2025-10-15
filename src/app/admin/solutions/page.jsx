@@ -50,8 +50,8 @@ export default function Solutions() {
     
     try {
       setLoading(true);
-      await axios.delete(`/api/solutions/${solution._id}`);
-      setSolutions(prev => prev.filter(s => s._id !== solution._id));
+      await axios.delete(`/api/solutions/${solution.slug}`);
+      setSolutions(prev => prev.filter(s => s.slug !== solution.slug));
       alert('Solution deleted successfully');
     } catch (error) {
       console.error('Error deleting solution:', error);
@@ -67,11 +67,11 @@ export default function Solutions() {
       
       if (editingSolution) {
         const res = await axios.put(
-          `/api/solutions/${editingSolution._id}`,
+          `/api/solutions/${editingSolution.slug}`,
           formData
         );
         setSolutions(solutions.map(s => 
-          s._id === editingSolution._id ? res.data : s
+          s.slug === editingSolution.slug ? res.data : s
         ));
         alert('Solution updated successfully');
       } else {
@@ -124,6 +124,7 @@ export default function Solutions() {
             initialData={editingSolution}
             onSubmit={handleFormSubmit}
             onCancel={handleFormCancel}
+            loading={loading}
           />
         </DialogContent>
       </Dialog>

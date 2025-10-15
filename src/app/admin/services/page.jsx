@@ -124,6 +124,7 @@ export default function Services() {
             initialData={editingService}
             onSubmit={handleFormSubmit}
             onCancel={handleFormCancel}
+            loading={loading}
           />
         </DialogContent>
       </Dialog>

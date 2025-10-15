@@ -9,13 +9,7 @@ import axios from "axios";
 import { fetchServices } from "@/slices/services.slice";
 import { useDispatch, useSelector } from "react-redux";
 
-const categoryColors = {
-  Development: "bg-primary/10 text-primary border-primary/20",
-  Marketing: "bg-secondary/10 text-secondary border-secondary/20", 
-  Testing: "bg-chart-3/10 text-chart-3 border-chart-3/20",
-  Infrastructure: "bg-chart-4/10 text-chart-4 border-chart-4/20",
-  Consulting: "bg-chart-5/10 text-chart-5 border-chart-5/20"
-};
+
 
 export default function ServicesGrid() {
   const {data: services, isLoading, error} = useSelector(state => state.services)
@@ -87,7 +81,7 @@ export default function ServicesGrid() {
                       />
                     </div>
                     <Badge 
-                      className={`text-xs ${categoryColors[service.category]}`}
+                      className='bg-primary/10 text-primary border-primary/20'
                       data-testid={`badge-category-${service._id}`}
                     >
                       {service.category}

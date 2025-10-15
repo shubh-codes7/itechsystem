@@ -1,59 +1,6 @@
-'use client'
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { CheckCircle, Code, Database, Globe, Smartphone, Brain, FileText, Users, Award, Download } from "lucide-react"
-
-
-// const modules = [
-//   {
-//     id: "1",
-//     title: "Frontend Fundamentals",
-//     duration: "4 weeks",
-//     topics: ["HTML5 & CSS3", "JavaScript ES6+", "Responsive Design", "Git & GitHub"],
-//     projects: 3
-//   },
-//   {
-//     id: "2", 
-//     title: "React Development",
-//     duration: "6 weeks",
-//     topics: ["React Components", "State Management", "React Router", "Testing"],
-//     projects: 4
-//   },
-//   {
-//     id: "3",
-//     title: "Backend Development",
-//     duration: "5 weeks", 
-//     topics: ["Node.js & Express", "RESTful APIs", "Authentication", "Middleware"],
-//     projects: 3
-//   },
-//   {
-//     id: "4",
-//     title: "Database Management",
-//     duration: "3 weeks",
-//     topics: ["MongoDB", "PostgreSQL", "Database Design", "ORMs"],
-//     projects: 2
-//   },
-//   {
-//     id: "5",
-//     title: "Full Stack Projects",
-//     duration: "4 weeks",
-//     topics: ["MERN Stack", "Deployment", "DevOps Basics", "Performance"],
-//     projects: 2
-//   }
-// ]
-
-// const tools = [
-//   { name: "React", icon: "⚛️", category: "Frontend" },
-//   { name: "Node.js", icon: "🟢", category: "Backend" },
-//   { name: "MongoDB", icon: "🍃", category: "Database" },
-//   { name: "PostgreSQL", icon: "🐘", category: "Database" },
-//   { name: "Express", icon: "🚀", category: "Backend" },
-//   { name: "TypeScript", icon: "🔷", category: "Language" },
-//   { name: "Docker", icon: "🐳", category: "DevOps" },
-//   { name: "AWS", icon: "☁️", category: "Cloud" }
-// ]
+import { CheckCircle, Brain, FileText, Users, Award } from "lucide-react"
 
 const additionalOfferings = [
   { icon: Brain, title: "GenAI Integration", description: "Learn to integrate AI tools and LLMs into your applications" },
@@ -63,11 +10,6 @@ const additionalOfferings = [
 ]
 
 export default function CurriculumSection({title, modules, tools, why}) {
-  const handleDownloadSyllabus = () => {
-    console.log('Download syllabus clicked')
-    // todo: remove mock functionality
-    alert('Syllabus download would be implemented here')
-  }
 
   return (
     <section id="curriculum" className="py-24 bg-background">

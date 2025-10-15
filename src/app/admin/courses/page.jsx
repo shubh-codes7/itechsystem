@@ -72,7 +72,6 @@ export default function Courses() {
   };
 
   const handleFormSubmit = async (formData) => {
-    console.log('Form data:', formData);
     
     try {
       setLoading(true);
@@ -89,7 +88,6 @@ export default function Courses() {
           c.slug === editingCourse.slug ? res.data : c
         ));
         
-        console.log('Course updated:', res.data);
         alert('Course updated successfully');
       } else {
         // Create new course

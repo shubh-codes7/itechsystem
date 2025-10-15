@@ -2,7 +2,7 @@ import ServiceDetailClient from './ServiceDetailClient';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const res = await fetch(`http://localhost:3000/api/services/${slug}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/services/${slug}`);
   const service = await res.json();
   
   return {

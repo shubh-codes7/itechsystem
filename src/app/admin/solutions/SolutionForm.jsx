@@ -9,13 +9,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { X, Plus } from "lucide-react";
 
-export function SolutionForm({ initialData, onSubmit, onCancel }) {
+export function SolutionForm({ initialData, onSubmit, onCancel, loading }) {
   const [formData, setFormData] = useState({
+    slug: initialData?.slug || "",
     title: initialData?.title || "",
     description: initialData?.description || "",
     icon: initialData?.icon || "",
     category: initialData?.category || "",
     features: initialData?.features || [],
+    seo: initialData?.seo || {
+      title: "",
+      description: ""
+    }
   });
 
   const [newFeature, setNewFeature] = useState("");
@@ -43,7 +48,7 @@ export function SolutionForm({ initialData, onSubmit, onCancel }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form className="space-y-6">
       <Card>
         <CardHeader>
           <CardTitle>Basic Information</CardTitle>
@@ -58,6 +63,18 @@ export function SolutionForm({ initialData, onSubmit, onCancel }) {
                 setFormData({ ...formData, title: e.target.value })
               }
               placeholder="Enter solution title"
+              required
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="slug">Slug</Label>
+            <Input
+              id="slug"
+              value={formData.slug}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, slug: e.target.value }))
+              }
               required
             />
           </div>
@@ -100,6 +117,46 @@ export function SolutionForm({ initialData, onSubmit, onCancel }) {
               rows={4}
               required
             />
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* SEO Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle>SEO</CardTitle>
+        </CardHeader>
+        
+        <CardContent className="space-y-4">
+          <div className="border rounded-lg p-4 space-y-4 bg-muted/30">
+            <div className="flex flex-col gap-4">
+              <div>
+                <Label htmlFor="seo-title">Title Tag (50-60 characters)</Label>
+                <Input
+                  id="seo-title"
+                  value={formData.seo.title}
+                  maxLength="60"
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, seo: {...prev.seo, title: e.target.value} }))
+                  }
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="seo-description">Description Tag (120-160 characters)</Label>
+                <Textarea
+                  id="seo-description"
+                  value={formData.seo.description}
+                  maxLength={160}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      seo: {...prev.seo, description: e.target.value.slice(0, 160)}
+                    }))
+                  }
+                />
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -147,8 +204,8 @@ export function SolutionForm({ initialData, onSubmit, onCancel }) {
         <Button type="button" variant="outline" onClick={onCancel}>
           Cancel
         </Button>
-        <Button type="submit">
-          Save Solution
+        <Button type="button" onClick={handleSubmit} disabled={loading}>
+          {loading ? "Saving Solution..." : "Save Solution"}
         </Button>
       </div>
     </form>

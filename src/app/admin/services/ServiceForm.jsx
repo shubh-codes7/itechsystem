@@ -238,6 +238,8 @@ export function ServiceForm({ initialData, onSubmit, onCancel, loading }) {
         </CardContent>
       </Card>
 
+
+      {/* SEO Form */}
       <Card>
         <CardHeader>
           <CardTitle>SEO</CardTitle>

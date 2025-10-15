@@ -7,14 +7,6 @@ import { Check, ArrowLeft, Sparkles, Wrench } from "lucide-react";
 import Link from 'next/link';
 import { useSelector } from "react-redux";
 
-const categoryColors = {
-  Development: "bg-primary/10 text-primary",
-  Marketing: "bg-secondary/10 text-secondary",
-  Testing: "bg-chart-3/10 text-chart-3",
-  Infrastructure: "bg-chart-4/10 text-chart-4",
-  Consulting: "bg-chart-5/10 text-chart-5"
-};
-
 export default function ServiceDetailClient({ slug }) {
   const { data: services, isLoading, error } = useSelector(state => state.services);
   
@@ -67,14 +59,9 @@ export default function ServiceDetailClient({ slug }) {
           <div className="lg:col-span-2 space-y-8">
             <div className="space-y-4">
               <div className="flex items-center gap-4">
-                <div>
                   <h1 className="text-3xl md:text-4xl font-bold font-poppins mb-2" data-testid="text-service-title">
                     {title}
                   </h1>
-                  <Badge className={categoryColors[category]} data-testid="badge-category">
-                    {category}
-                  </Badge>
-                </div>
               </div>
               
               <p className="text-lg text-foreground leading-relaxed" data-testid="text-service-description">
@@ -118,7 +105,7 @@ export default function ServiceDetailClient({ slug }) {
                   >
                     <div className="flex items-start gap-3">
                       <div className="mt-0.5 shrink-0">
-                        <Check className="w-5 h-5 text-accent" />
+                        <Check className="w-5 h-5 text-green-600" />
                       </div>
                       <span className="text-foreground">{benefit}</span>
                     </div>

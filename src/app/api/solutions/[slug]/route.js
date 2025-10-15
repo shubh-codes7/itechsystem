@@ -6,7 +6,7 @@ export async function GET(request, { params }) {
   const { slug } = await params;
   try {
     await connectDB();
-    const solution = await Solution.findOne(slug);
+    const solution = await Solution.findOne({slug});
     
     if (!solution) {
       return NextResponse.json(
@@ -32,7 +32,7 @@ export async function PUT(request, { params }) {
     const body = await request.json();
     
     const solution = await Solution.findOneAndUpdate(
-      slug,
+      {slug},
       body,
       { new: true, runValidators: true }
     );
@@ -58,7 +58,7 @@ export async function DELETE(request, { params }) {
   const { slug } = await params;
   try {
     await connectDB();
-    const solution = await Solution.findOneAndDelete(slug);
+    const solution = await Solution.findOneAndDelete({slug});
     
     if (!solution) {
       return NextResponse.json(

@@ -1,9 +1,6 @@
-'use client'
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Award, TrendingUp, Users, Star, Download, ExternalLink, CheckCircle } from "lucide-react"
+import { CheckCircle } from "lucide-react"
 
 
 const certifications = [
@@ -24,17 +21,6 @@ const certifications = [
 ]
 
 export default function CertificationSection() {
-  const handleDownloadSample = () => {
-    console.log('Download sample certificate clicked')
-    // todo: remove mock functionality
-    alert('Sample certificate download would be implemented here')
-  }
-
-  const handleViewCredentials = () => {
-    console.log('View credentials clicked')
-    // todo: remove mock functionality
-    alert('Credential verification page would open here')
-  }
 
   return (
     <section className="py-24 bg-muted/30">

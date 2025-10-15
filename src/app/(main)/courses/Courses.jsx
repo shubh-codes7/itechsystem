@@ -5,11 +5,22 @@ import Image from "next/image"
 import Link from "next/link"
 import HeroSection from "@/components/HeroSection"
 import Placements from "@/components/Placements"
+import { fetchCourses } from "@/slices/courses.slice";
+import { useDispatch, useSelector } from "react-redux"
 
 export default async function CoursesPage() {
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/courses`)
-  const courses = await res.json()
+  const {data: courses, isLoading, error} = useSelector(state => state.courses)
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    if(!courses || courses.length == 0){
+      dispatch(fetchCourses())
+    }
+  }, [dispatch, courses])
+
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/courses`)
+  // const courses = await res.json()
 
   return (
     <section className=" bg-muted/30">

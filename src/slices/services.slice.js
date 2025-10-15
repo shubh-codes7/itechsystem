@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchServices = createAsyncThunk('fetchServices', async() => {
-  const res = await fetch('http://localhost:3000/api/services')
+  const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/services`)
   const data = res.json()
   return data
 })

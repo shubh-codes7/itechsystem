@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 // import { useToast } from "@/hooks/use-toast"
-import { Calendar, Clock, Users, Phone, Mail, User, CheckCircle } from "lucide-react"
+import { Calendar, Phone, Mail, User, CheckCircle } from "lucide-react"
 
 const benefits = [
   "Live coding demonstration",

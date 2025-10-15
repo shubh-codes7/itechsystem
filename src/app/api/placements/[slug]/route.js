@@ -3,10 +3,10 @@ import connectDB from '@/lib/mongodb';
 import Placement from '@/lib/models/Placement';
 
 export async function GET(request, { params }) {
-  const { id } = await params;
+  const { slug } = await params;
   try {
     await connectDB();
-    const placement = await Placement.findById(id);
+    const placement = await Placement.findOne({slug});
     
     if (!placement) {
       return NextResponse.json(
@@ -26,13 +26,13 @@ export async function GET(request, { params }) {
 }
 
 export async function PUT(request, { params }) {
-  const { id } = await params;
+  const { slug } = await params;
   try {
     await connectDB();
     const body = await request.json();
     
-    const placement = await Placement.findByIdAndUpdate(
-      id,
+    const placement = await Placement.findOneAndUpdate(
+      {slug},
       body,
       { new: true, runValidators: true }
     );
@@ -55,10 +55,10 @@ export async function PUT(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
-  const { id } = await params;
+  const { slug } = await params;
   try {
     await connectDB();
-    const placement = await Placement.findByIdAndDelete(id);
+    const placement = await Placement.findOneAndDelete({slug});
     
     if (!placement) {
       return NextResponse.json(
