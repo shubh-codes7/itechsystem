@@ -1,6 +1,6 @@
 // import { NextResponse } from 'next/server';
-// import connectDB from '@/lib/mongodb';
-// import Job from '@/lib/models/Job';
+// import { connectDB } from "@/lib/dbConnect.js"
+// import Placement from '@/models/Service.js';
 
 // export async function GET(request, { params }) {
 //   try {
