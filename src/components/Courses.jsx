@@ -159,8 +159,6 @@ export default function CourseSection() {
     fetchCourses();
   }, []);
 
-  // Memoize filtered items to avoid unnecessary recalculations
-  // FIX: Added allCourses to dependency array
   const filteredItems = useMemo(() => {
     if (selectedCategory === "all") {
       return allCourses;
@@ -169,7 +167,7 @@ export default function CourseSection() {
   }, [selectedCategory, allCourses]);
 
   return (
-    <section className="pt-20 bg-muted/30">
+    <section className="py-16 bg-muted/30">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -254,7 +252,7 @@ export default function CourseSection() {
           </div>
         )}
 
-        <Button className="block mx-auto my-10">
+        <Button className="block mx-auto mt-8">
           <Link href="/courses">Explore All Courses</Link>
         </Button>
       </div>

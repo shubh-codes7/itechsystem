@@ -4,18 +4,20 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import Link from "next/link";
 import ModalForm from "./ModalForm";
+import HeroElement from "./3DElement";
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Hero() {
   const [currentSkill, setCurrentSkill] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
   const skills = [
-    "Full Stack Development",
     "Data Science & AI",
-    "Mobile App Development",
-    "DevOps Engineering",
+    "Full Stack Development",
     "Programming Languages",
-    "Cyber   Security"
+    "Mobile App Development",
+    "Cloud Computing",
+    "Software Testing"
   ];
 
   const stats = [
@@ -70,8 +72,19 @@ export default function Hero() {
 
             <h1 className="text-5xl font-[Poppins] text-white lg:text-7xl font-bold leading-tight">
               Master
-              <span className="block font-mono bg-clip-text text-blue-200 min-h-[13rem]">
-                {skills[currentSkill]}
+              <span className="block font-mono bg-clip-text text-blue-200 min-h-[13rem] max-w-[30rem]">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={skills[currentSkill]}
+                    className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400  overflow-hidden"
+                    initial={{ opacity: 0, scale: 1.3 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.7 }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    {skills[currentSkill]}
+                  </motion.span>
+                </AnimatePresence>
               </span>
             </h1>
 
@@ -110,9 +123,10 @@ export default function Hero() {
             </div>
           </div>
 
+
           {/* Right Content - Stats Cards */}
           <div
-            className={`lg:w-1/2 mt-16 lg:mt-0 transform transition-all duration-1000 ${
+            className={`lg:w-1/2  mt-16 lg:mt-0 transform transition-all duration-1000 ${
               isVisible
                 ? "translate-x-0 opacity-100"
                 : "translate-x-10 opacity-0"
@@ -120,7 +134,7 @@ export default function Hero() {
             style={{ transitionDelay: "300ms" }}
           >
             {/* Floating Code Element */}
-            <div className="m-12 relative">
+            {/* <div className="m-12 relative">
               <div className="bg-slate-800 backdrop-blur-md rounded-xl p-6 border border-slate-700/50 font-mono text-sm">
                 <div className="flex items-center mb-4">
                   <div className="flex space-x-2">
@@ -147,11 +161,14 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
+
+            <HeroElement />
+
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-8">
           {stats.map((stat, index) => (
             <Card
