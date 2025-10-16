@@ -32,10 +32,10 @@ export default function SolutionsGrid() {
     <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <Badge className="mb-4" data-testid="badge-solutions-overview">
+          <Badge className="mb-4">
             Our Solutions
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold font-[Poppins] mb-6" data-testid="text-solutions-title">
+          <h2 className="text-4xl md:text-5xl font-bold font-[Poppins] mb-6">
             Industry-Specific <span className="text-primary">Software</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -50,7 +50,6 @@ export default function SolutionsGrid() {
               <Card 
                 key={solution.id}
                 className="p-8 hover-elevate transition-all duration-200 h-full"
-                data-testid={`card-solution-${solution.id}`}
               >
                 <CardContent className="p-0">
                   <div className="flex items-start justify-between mb-6">
@@ -65,17 +64,16 @@ export default function SolutionsGrid() {
                     </div>
                     <Badge 
                       className='bg-secondary/10 text-secondary border-secondary/20'
-                      data-testid={`badge-category-${solution.id}`}
                     >
                       {solution.category}
                     </Badge>
                   </div>
                   
-                  <h3 className="text-2xl font-bold mb-4 leading-tight" data-testid={`text-solution-${solution.id}-title`}>
+                  <h3 className="text-2xl font-bold mb-4 leading-tight" >
                     {solution.title}
                   </h3>
                   
-                  <p className="text-muted-foreground mb-6" data-testid={`text-solution-${solution.id}-description`}>
+                  <p className="text-muted-foreground mb-6" >
                     {solution.description}
                   </p>
                   
@@ -86,7 +84,6 @@ export default function SolutionsGrid() {
                         <div 
                           key={index} 
                           className="flex items-center text-sm text-muted-foreground"
-                          data-testid={`text-feature-${solution.id}-${index}`}
                         >
                           <div className="w-1.5 h-1.5 bg-secondary rounded-full mr-2 flex-shrink-0"></div>
                           {feature}

@@ -281,4 +281,6 @@
   font-family: 'dominik'
 }
 
-
+body{
+  overflow-x: hidden;
+}

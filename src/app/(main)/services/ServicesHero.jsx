@@ -7,10 +7,10 @@ export default function ServicesHero() {
     <section className="py-24 bg-gradient-to-r from-primary/5 to-secondary/5">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center">
-          <Badge className="mb-4" data-testid="badge-services-status">
+          <Badge className="mb-4" >
             IT Training Institute
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold font-[Poppins] mb-6" data-testid="text-hero-title">
+          <h1 className="text-4xl md:text-6xl font-bold font-[Poppins] mb-6">
             <span className="text-primary">I-Tech Systems</span>
             <br />
             Professional Services
@@ -20,10 +20,10 @@ export default function ServicesHero() {
             From web development to digital marketing, we provide industry-leading expertise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" data-testid="button-get-started">
+            <Button size="lg">
               Get Started Today
             </Button>
-            <Button variant="outline" size="lg" data-testid="button-view-courses">
+            <Button variant="outline" size="lg" >
               View All Courses
             </Button>
           </div>

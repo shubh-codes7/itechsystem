@@ -8,12 +8,11 @@ export default function LocationMap() {
     <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-[Poppins] mb-6" data-testid="text-location-title">
+          <h2 className="text-4xl md:text-5xl font-bold font-[Poppins] mb-6" >
             Visit Our <span className="text-primary">Institute</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Located in the heart of Nashik's Education Center, our institute is easily accessible 
-            by all modes of transportation.
+            Experience top-tier IT education in Nashik—accessible location, expert trainers, career-ready programs.
           </p>
         </div>
 
@@ -39,7 +38,6 @@ export default function LocationMap() {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="I-Tech Systems Location"
-                    data-testid="google-map"
                   />
                 </div>
                 

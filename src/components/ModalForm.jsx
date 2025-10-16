@@ -21,7 +21,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useEffect, useState } from "react"
-import { TicketCheck, TicketCheckIcon, ListCheckIcon, Check } from 'lucide-react'
+import { Check } from 'lucide-react'
 import axios from "axios"
 
 export default function ModalForm() {
@@ -83,6 +83,7 @@ export default function ModalForm() {
       alert("✅ Demo booked successfully!");
       setForm({ name: "", mobile: "", location: "", course: "" });
       setOpen(false)
+      localStorage.setItem("demoFormSubmitted", "true");
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("❌ Something went wrong. Please try again later.");
@@ -92,11 +93,22 @@ export default function ModalForm() {
   }
 
   useEffect(()=>{
-    const timer = setTimeout(()=>{
-      setOpen(true)
-    }, 30000)
 
-    return () =>  clearTimeout(timer)
+    const formSubmitted = localStorage.getItem("demoFormSubmitted");
+    const shownCount = parseInt(localStorage.getItem("demoFormShownCount") || "0");
+
+    if (formSubmitted === "true") {
+      return;
+    }
+
+    if(shownCount < 3){
+      const timer = setTimeout(()=>{
+        setOpen(true)
+        localStorage.setItem("demoFormShownCount", (shownCount + 1).toString());
+      }, 30000)
+
+      return () =>  clearTimeout(timer)
+    }
   }, [])
   
   return (
@@ -105,9 +117,9 @@ export default function ModalForm() {
           <Button >Contact Now</Button>
         </DialogTrigger>
 
-        <DialogContent className="flex w-[80vw] p-0 overflow-hidden">
+        <DialogContent className="flex md:flex-row flex-col w-[80vw] p-0 overflow-hidden">
 
-          <DialogHeader className="flex flex-col justify-center w-[50vw] p-4 text-white bg-gradient-to-br from-blue-900 to-purple-900">
+          <DialogHeader className="flex flex-col justify-center p-4 text-white bg-gradient-to-br from-blue-900 to-purple-900">
             <DialogTitle className="text-center text-xl">Enquire Now!</DialogTitle>
             <DialogDescription className="text-center text-white mb-2">
               Get ahead of competition, Enquire now!
@@ -135,7 +147,7 @@ export default function ModalForm() {
             </div>
           </DialogHeader>
 
-          <form onSubmit={submitForm} className="w-[50vw] py-4 px-2">
+          <form onSubmit={submitForm} className="md:w-[50w]  p-4 md:py-4 md:px-2">
           <div className="grid gap-4">
             <div className="grid gap-3">
               <Label htmlFor="name">Your Name</Label>

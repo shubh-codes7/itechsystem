@@ -57,10 +57,10 @@ export default function TrustSection() {
     <section className="py-24 bg-">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <Badge className="mb-4" data-testid="badge-trust-status">
+          <Badge className="mb-4" >
             Industry Trust
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold font-[Poppins] mb-6" data-testid="text-trust-title">
+          <h2 className="text-4xl md:text-5xl font-bold font-[Poppins] mb-6" >
             Trusted by <span className="text-primary">Industry Leaders</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -74,7 +74,7 @@ export default function TrustSection() {
           {achievements.map((achievement, index) => {
             const IconComponent = achievement.icon;
             return (
-              <Card key={index} className="text-center p-6 hover-elevate" data-testid={`card-achievement-${index}`}>
+              <Card key={index} className="text-center p-6 hover-elevate" >
                 <CardContent className="p-0">
                   <div className="bg-primary/10 p-4 rounded-lg w-fit mx-auto mb-4">
                     <IconComponent className={`w-8 h-8 ${achievement.color}`} />
@@ -89,23 +89,7 @@ export default function TrustSection() {
               </Card>
             );
           })}
-        </div>
-
-        {/* Partner Companies */}
-        {/* <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center mb-8 text-primary">Our Hiring Partners</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {partnerCompanies.map((company, index) => (
-              <Card key={index} className="p-4 hover-elevate" data-testid={`card-partner-${index}`}>
-                <CardContent className="p-0 text-center">
-                  <div className="font-semibold text-primary">{company}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div> */}
-
-        
+        </div>        
 
         {/* Call to Action for Companies */}
         <div className="mt-16 text-center">
@@ -120,14 +104,12 @@ export default function TrustSection() {
                 <button 
                   className="bg-primary text-primary-foreground px-6 py-3 rounded-md hover-elevate font-medium"
                   onClick={() => console.log('Corporate partnership enquiry')}
-                  data-testid="button-corporate-partnership"
                 >
                   Corporate Partnership
                 </button>
                 <button 
                   className="border border-primary text-primary px-6 py-3 rounded-md hover-elevate font-medium"
                   onClick={() => console.log('Project collaboration enquiry')}
-                  data-testid="button-project-collaboration"
                 >
                   Project Collaboration
                 </button>

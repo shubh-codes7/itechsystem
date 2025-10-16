@@ -12,10 +12,10 @@ export default function SolutionsContact() {
     <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <Badge className="mb-4" data-testid="badge-solutions-contact-status">
+          <Badge className="mb-4" >
             Get Started Today
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold font-[Poppins] mb-6" data-testid="text-solutions-contact-title">
+          <h2 className="text-4xl md:text-5xl font-bold font-[Poppins] mb-6" >
             Ready to Transform Your <span className="text-primary">Business</span>?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -40,7 +40,6 @@ export default function SolutionsContact() {
                   variant="outline" 
                   size="sm"
                   onClick={() => handleContactClick('call')}
-                  data-testid="button-schedule-call"
                 >
                   Schedule Call
                 </Button>
@@ -60,7 +59,6 @@ export default function SolutionsContact() {
                   variant="outline" 
                   size="sm"
                   onClick={() => handleContactClick('demo')}
-                  data-testid="button-request-demo-contact"
                 >
                   Request Demo
                 </Button>
@@ -80,7 +78,6 @@ export default function SolutionsContact() {
                   variant="outline" 
                   size="sm"
                   onClick={() => handleContactClick('email')}
-                  data-testid="button-email-consultation"
                 >
                   Send Email
                 </Button>
@@ -100,7 +97,6 @@ export default function SolutionsContact() {
                   variant="outline" 
                   size="sm"
                   onClick={() => handleContactClick('brochure')}
-                  data-testid="button-download-solutions-brochure"
                 >
                   Download PDF
                 </Button>
@@ -112,7 +108,7 @@ export default function SolutionsContact() {
           <div>
             <Card className="p-8 bg-gradient-to-b from-secondary/10 to-primary/10 border-secondary/20 h-full flex flex-col justify-center">
               <CardContent className="p-0 text-center">
-                <h3 className="text-2xl font-bold mb-4" data-testid="text-cta-solutions-title">
+                <h3 className="text-2xl font-bold mb-4" >
                   Custom Development Available
                 </h3>
                 <p className="text-muted-foreground mb-6">
@@ -124,7 +120,6 @@ export default function SolutionsContact() {
                     size="lg" 
                     className="w-full"
                     onClick={() => handleContactClick('custom-consultation')}
-                    data-testid="button-custom-consultation"
                   >
                     Custom Solution Consultation
                   </Button>
@@ -133,7 +128,6 @@ export default function SolutionsContact() {
                     size="lg" 
                     className="w-full"
                     onClick={() => handleContactClick('portfolio')}
-                    data-testid="button-view-portfolio"
                   >
                     View Our Portfolio
                   </Button>

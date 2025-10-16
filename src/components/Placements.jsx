@@ -34,7 +34,7 @@ export default function Placements() {
   };
 
   return (
-    <section className="py-24  ">
+    <section className="py-16  ">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <Badge className="mb-4">
@@ -51,7 +51,7 @@ export default function Placements() {
 
         {/* Marquee Container */}
         <div 
-          className="relative overflow-hidden ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]"
+          className="relative overflow-hidden "
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -59,7 +59,7 @@ export default function Placements() {
             className="flex gap-6 animate-marquee"
             style={{
               width: `${duplicatedStudents.length * 350}px`,
-              animationDuration: '60s',
+              animationDuration: '20s',
               animationTimingFunction: 'linear',
               animationIterationCount: 'infinite',
               animationPlayState: isHovered ? 'paused' : 'running'
@@ -103,7 +103,7 @@ export default function Placements() {
 
         {/* Placement Stats */}
         <div className="mt-16 text-center">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <div>
               <div className="text-3xl font-bold text-primary mb-2">500+</div>
               <div className="text-sm text-muted-foreground">Students Placed</div>

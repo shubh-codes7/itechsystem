@@ -59,18 +59,18 @@ export default function ServiceDetailClient({ slug }) {
           <div className="lg:col-span-2 space-y-8">
             <div className="space-y-4">
               <div className="flex items-center gap-4">
-                  <h1 className="text-3xl md:text-4xl font-bold font-poppins mb-2" data-testid="text-service-title">
+                  <h1 className="text-3xl md:text-4xl font-bold font-poppins mb-2" >
                     {title}
                   </h1>
               </div>
               
-              <p className="text-lg text-foreground leading-relaxed" data-testid="text-service-description">
+              <p className="text-lg text-foreground leading-relaxed" >
                 {fullDescription}
               </p>
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold font-poppins" data-testid="text-features-title">
+              <h2 className="text-2xl font-semibold font-poppins" >
                 Key Features
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
@@ -78,7 +78,6 @@ export default function ServiceDetailClient({ slug }) {
                   <div 
                     key={index} 
                     className="flex items-start gap-3"
-                    data-testid={`feature-${index}`}
                   >
                     <div className="mt-0.5 shrink-0">
                       <Check className="w-5 h-5 text-primary" />
@@ -92,7 +91,7 @@ export default function ServiceDetailClient({ slug }) {
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-6 h-6 text-accent" />
-                <h2 className="text-2xl font-semibold font-poppins" data-testid="text-benefits-title">
+                <h2 className="text-2xl font-semibold font-poppins">
                   Why Choose Us
                 </h2>
               </div>
@@ -101,7 +100,6 @@ export default function ServiceDetailClient({ slug }) {
                   <Card 
                     key={index} 
                     className="p-4 hover-elevate transition-all duration-200"
-                    data-testid={`benefit-${index}`}
                   >
                     <div className="flex items-start gap-3">
                       <div className="mt-0.5 shrink-0">
@@ -117,7 +115,7 @@ export default function ServiceDetailClient({ slug }) {
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <Wrench className="w-6 h-6 text-secondary" />
-                <h2 className="text-2xl font-semibold font-poppins" data-testid="text-technologies-title">
+                <h2 className="text-2xl font-semibold font-poppins" >
                   Technologies & Tools
                 </h2>
               </div>
@@ -127,7 +125,6 @@ export default function ServiceDetailClient({ slug }) {
                     key={index}
                     variant="secondary"
                     className="text-sm px-3 py-1"
-                    data-testid={`technology-${index}`}
                   >
                     {tech}
                   </Badge>
@@ -139,7 +136,7 @@ export default function ServiceDetailClient({ slug }) {
           <div className="lg:col-span-1">
             <Card className="p-6 sticky top-24 space-y-6">
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold font-poppins" data-testid="text-cta-title">
+                <h3 className="text-xl font-semibold font-poppins" >
                   Ready to get started?
                 </h3>
                 <p className="text-muted-foreground">

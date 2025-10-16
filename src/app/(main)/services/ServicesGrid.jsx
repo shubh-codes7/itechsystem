@@ -79,7 +79,7 @@ export default function ServicesGrid() {
                     </div>
                     <Badge 
                       className='bg-primary/10 text-primary border-primary/20'
-                      data-testid={`badge-category-${service._id}`}
+                     
                     >
                       {service.category}
                     </Badge>

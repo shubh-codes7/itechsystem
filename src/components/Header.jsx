@@ -50,9 +50,6 @@ export default function ResponsiveHeader() {
     }
   });
 
-  console.log(categorizedCourses.programming);
-
-
   // Build dropdown items dynamically from categorized data
   const courseDropdown = [
     {

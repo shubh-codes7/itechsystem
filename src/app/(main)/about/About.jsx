@@ -77,7 +77,6 @@ export default function AboutPage() {
   ];
 
   const achievements = [
-    { number: "1000+", label: "Students Trained", icon: Users },
     { number: "85%", label: "Placement Rate", icon: TrendingUp },
     { number: "18+", label: "Years Experience", icon: Calendar },
     { number: "30+", label: "Courses Offered", icon: BookOpen },
@@ -216,7 +215,7 @@ export default function AboutPage() {
       {/* Stats Counter Section */}
       <section id="counter-section" className="py-16 bg-white">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between gap-8">
+          <div className="flex flex-wrap justify-evenly gap-4">
             {achievements.map((achievement, index) => {
               const IconComponent = achievement.icon;
               return (

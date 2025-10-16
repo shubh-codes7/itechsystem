@@ -61,7 +61,7 @@ export default function EnquiryForm() {
     <div className="w-full flex items-center justify-center ">
       <form
         onSubmit={submitForm}
-        className="w-[50vw] border-2 rounded-2xl p-4 shadow-lg"
+        className="md:w-[50vw] border-2 rounded-2xl p-8 shadow-lg"
       >
         <h3 className="text-center mb-4 font-bold text-3xl">Contact Now</h3>
         <div className="grid gap-4">

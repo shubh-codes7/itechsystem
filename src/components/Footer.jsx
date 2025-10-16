@@ -1,14 +1,13 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+
 import { Card, CardContent } from "@/components/ui/card"
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, Send, FacebookIcon, TwitterIcon } from "lucide-react"
 
 export default function Footer() {
 
   return (
-    <footer className="bg-muted/50 border-t border-border pt-16 pb-8 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex justify-between gap-8 mb-12">
+    <footer className="bg-muted/50 border-t border-border py-8 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+      <div className="max-w-7xl mx-auto px-6 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12">
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-bold font-[dominique] text-primary mb-4" >
@@ -105,11 +104,11 @@ export default function Footer() {
 
         {/* Trust Indicators */}
         <Card className="mt-8 bg-card border-card-border">
-          <CardContent className="p-6 text-center">
+          <CardContent className="px-2 text-center">
             <h4 className="font-semibold mb-3" >
               Proudly Associated with
             </h4>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap justify-center md:gap-6 gap-2 text-sm text-muted-foreground">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-secondary rounded-full mr-2"></div>
                 <span>ISO 9001:2015 Certified</span>

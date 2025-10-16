@@ -1,12 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export default function ContactSection() {
-  const handleContactClick = (method) => {
-    console.log(`Contact via ${method} clicked`);
-  };
 
   return (
     <section className="py-24 bg-background">
@@ -15,7 +11,7 @@ export default function ContactSection() {
           <Badge className="mb-4" data-testid="badge-contact-status">
             Contact Now!
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold font-[Poppins] mb-6" data-testid="text-contact-title">
+          <h2 className="text-4xl md:text-5xl font-bold font-[Poppins] mb-6" >
             Consult Now
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -34,7 +30,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Phone</h4>
-                  <p className="text-muted-foreground">+91 9834975865, +91 9422248005 </p>
+                  <p className="text-muted-foreground">+91 9834975865, <br/>+91 9422248005 </p>
                 </div>
               </CardContent>
             </Card>

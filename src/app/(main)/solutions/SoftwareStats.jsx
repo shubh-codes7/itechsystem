@@ -37,16 +37,15 @@ export default function SoftwareStats() {
             <Card 
               key={index}
               className="text-center p-6 hover-elevate transition-all duration-200"
-              data-testid={`card-software-stat-${index}`}
             >
               <CardContent className="p-0">
-                <div className="text-3xl md:text-4xl font-bold text-secondary mb-2" data-testid={`text-software-stat-${index}-value`}>
+                <div className="text-3xl md:text-4xl font-bold text-secondary mb-2" >
                   {stat.value}
                 </div>
-                <div className="font-semibold mb-1" data-testid={`text-software-stat-${index}-label`}>
+                <div className="font-semibold mb-1" >
                   {stat.label}
                 </div>
-                <div className="text-sm text-muted-foreground" data-testid={`text-software-stat-${index}-description`}>
+                <div className="text-sm text-muted-foreground" >
                   {stat.description}
                 </div>
               </CardContent>
