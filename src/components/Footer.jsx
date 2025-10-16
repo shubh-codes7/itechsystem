@@ -66,8 +66,8 @@ export default function Footer() {
               <div className="flex items-start">
                 <MapPin className="w-4 h-4 mr-3 text-white flex-shrink-0 mt-1" />
                 <span className="text-white/90" >
-                  Sumangal Luxuria, 3rd Floor, <br />
-                  Beside Westside Mall, College Road, Nashik-422005
+                  09, Sumangal Luxuria, 3rd Floor, <br />
+                  Beside Westside Showroom, College Road, Nashik-422005
                 </span>
               </div>
             </div>

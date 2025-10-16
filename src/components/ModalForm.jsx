@@ -151,15 +151,15 @@ export default function ModalForm() {
           <div className="grid gap-4">
             <div className="grid gap-3">
               <Label htmlFor="name">Your Name</Label>
-              <Input onChange={handleChange} value={form.name} id="name" name="name" placeholder="John Doe"/>
+              <Input onChange={handleChange} value={form.name} id="name" name="name" />
             </div>
             <div className="grid gap-3">
               <Label htmlFor="mobile">Mobile Number</Label>
-              <Input onChange={handleChange} value={form.mobile} id="mobile" name="mobile" placeholder="9876543212" />
+              <Input onChange={handleChange} value={form.mobile} id="mobile" name="mobile" />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="location">Your Location</Label>
-              <Input onChange={handleChange} value={form.location} id="location" name="location" placeholder="City, State" />
+              <Label htmlFor="location">Email</Label>
+              <Input onChange={handleChange} value={form.location} id="location" name="location"  />
             </div>
             <div className="grid gap-3">
               <Label htmlFor="course">Select Course</Label>
