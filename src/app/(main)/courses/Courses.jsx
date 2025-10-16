@@ -8,6 +8,7 @@ import HeroSection from "@/components/HeroSection"
 import Placements from "@/components/Placements"
 import { fetchCourses } from "@/slices/courses.slice";
 import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
 
 export default function CoursesPage() {
 
