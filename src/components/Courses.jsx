@@ -24,7 +24,7 @@ const popularCourses = [
   },
   {
     id: "2",
-    slug: "programming",
+    slug: "programming-diploma",
     title: "Diploma in Programming Languages",
     image: langImg,
     description:
@@ -33,7 +33,7 @@ const popularCourses = [
   },
   {
     id: "3",
-    slug: "data_analytics",
+    slug: "data-analytics",
     title: "Data Analytics",
     image: dsImg,
     description:

@@ -24,6 +24,16 @@ export default function CoursesPage() {
   // const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/api/courses`)
   // const courses = await res.json()
 
+  if (isLoading) {
+    return (
+      <section className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center">Loading courses...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className=" bg-muted/30">
       <HeroSection

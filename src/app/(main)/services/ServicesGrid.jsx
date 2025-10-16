@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import * as LucideIcons from "lucide-react";
-import axios from "axios";
 import { fetchServices } from "@/slices/services.slice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -62,7 +60,6 @@ export default function ServicesGrid() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {services.length > 0 && services.map((service) => {
-            const IconComponent = LucideIcons[service.icon]
             return (
               <Card 
                 key={service._id}

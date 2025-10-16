@@ -7,27 +7,72 @@ import {
   ChevronDown,
   Phone,
   Mail,
-  MapPin,
   Code,
-  Users,
-  Briefcase,
   Settings,
   FolderOpen,
   Cpu,
   Home,
   User,
   GraduationCap,
-  Filter,
 } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCourses } from "@/slices/courses.slice";
+import Link from "next/link";
 
 export default function ResponsiveHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [isVisible, setIsVisible] = useState(false);
+  const {data: courses, isLoading, error} = useSelector(state => state.courses)
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    if(!courses || courses.length == 0){
+      dispatch(fetchCourses())
+    }
+  }, [dispatch, courses])
+
+  const categorizedCourses = {
+    fullstack: [],
+    programming: [],
+    data: [],
+    other: [],
+  };
+
+  // Group courses dynamically
+  courses.forEach((course) => {
+    const cat = course.category?.toLowerCase();
+    if (categorizedCourses[cat]) {
+      categorizedCourses[cat].push(course);
+    } else {
+      categorizedCourses.other.push(course);
+    }
+  });
+
+  console.log(categorizedCourses.programming);
+
+
+  // Build dropdown items dynamically from categorized data
+  const courseDropdown = [
+    {
+      title: "Full Stack Development",
+      courses: categorizedCourses.fullstack,
+    },
+    {
+      title: "Programming Languages",
+      courses: categorizedCourses.programming,
+    },
+    {
+      title: "Data Science",
+      courses: categorizedCourses.data,
+    },
+    {
+      title: "Other",
+      courses: categorizedCourses.other,
+    },
+  ];
+
 
   const navigationItems = [
     {
@@ -47,99 +92,7 @@ export default function ResponsiveHeader() {
       href: "/courses",
       icon: GraduationCap,
       hasDropdown: true,
-      dropdownItems: [
-        {
-          title: "Full Stack Development",
-          courses: [
-            {
-              name: "Java Full Stack",
-              href: "/courses/java-dev",
-              icon: "https://img.icons8.com/?size=100&id=90519&format=png&color=000000",
-            },
-            {
-              name: "MERN Stack Development",
-              href: "/courses/mern",
-              icon: "https://img.icons8.com/?size=100&id=VHCVqzF1sqU9&format=png&color=000000",
-            },
-            
-            {
-              name: "Python Development",
-              href: "/courses/python-dev",
-              icon: "https://img.icons8.com/?size=100&id=13441&format=png&color=000000",
-            },
-            {
-              name: "Php Web Development",
-              href: "/courses/php-dev",
-              icon: "https://img.icons8.com/?size=100&id=f0R4xVI4Sc8O&format=png&color=000000",
-            },
-            {
-              name: "MEAN Stack Development",
-              href: "/courses/mean",
-              icon: "https://img.icons8.com/?size=100&id=102562&format=png&color=000000",
-            },
-            {
-              name: "DotNET",
-              href: "/courses/dotnet",
-              icon: "https://img.icons8.com/?size=100&id=1BC75jFEBED6&format=png&color=000000",
-            },
-          ],
-        },
-        {
-          title: "Programming Languages",
-          courses: [
-            {
-              name: "Diploma in Programming Languages",
-              href: "/courses/programming",
-              icon: "https://img.icons8.com/?size=100&id=19294&format=png&color=000000",
-            },
-            {
-              name: "C/C++ Programming",
-              href: "/courses/cpp",
-              icon: "https://img.icons8.com/?size=100&id=40669&format=png&color=000000",
-            },
-            {
-              name: "Java Programming",
-              href: "/courses/java",
-              icon: "https://img.icons8.com/?size=100&id=Pd2x9GWu9ovX&format=png&color=000000",
-            },
-            {
-              name: "Python Programming",
-              href: "/courses/python",
-              icon: "https://img.icons8.com/?size=100&id=13441&format=png&color=000000",
-            },
-          ],
-        },
-        {
-          title: "Data Science",
-          courses: [
-            {
-              name: "Data Analytics",
-              href: "/courses/data-analytics",
-              icon: "https://img.icons8.com/?size=100&id=B0dYqU1YVr72&format=png&color=000000",
-            },
-          ],
-        },
-        {
-          title: "Other",
-          courses: [
-            {
-              name: "Cloud Computing & DevOps",
-              href: "/courses/cloud",
-              icon: "https://img.icons8.com/?size=100&id=A4Ex3d4V9VuC&format=png&color=000000",
-            },
-            {
-              name: "Salesforce",
-              href: "/courses/salesforce",
-              icon: "https://img.icons8.com/?size=100&id=38804&format=png&color=000000",
-            },
-            {
-              name: "UI UX",
-              href: "/courses/uiux",
-              icon: "https://img.icons8.com/?size=100&id=18706&format=png&color=000000",
-            },
-          ],
-        },
-      ],
+      dropdownItems: courseDropdown
     },
     {
       name: "Services",
@@ -245,7 +198,7 @@ export default function ResponsiveHeader() {
                     }
                     onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
                   >
-                    <a
+                    <Link
                       href={item.href}
                       className="flex items-center px-1 py-2 text-white hover:text-blue-600 font-medium transition-all duration-300 group relative"
                     >
@@ -259,7 +212,7 @@ export default function ResponsiveHeader() {
                         />
                       )}
                       <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></div>
-                    </a>
+                    </Link>
 
                     {/* Dropdown Menu */}
                     {item.hasDropdown && (
@@ -276,7 +229,7 @@ export default function ResponsiveHeader() {
                               <h3 className="mb-2 font-semibold">{dropdownItem.title}</h3>
                               <div>
                                 {dropdownItem.courses.map((course, idx) => (
-                                  <div className="flex">
+                                  <div className="flex" key={idx}>
                                     <img
                                       src={course.icon}
                                       width={40}
@@ -284,16 +237,16 @@ export default function ResponsiveHeader() {
                                       alt="Icon"
                                       className="flex-shrink-0"
                                     />
-                                    <a
-                                      key={course.name}
-                                      href={course.href}
+                                    <Link
+                                      key={course.title}
+                                      href={`${process.env.NEXT_PUBLIC_DOMAIN_URL}/courses/${course.slug}`}
                                       className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 text-sm"
                                       style={{
                                         animationDelay: `${index * 50}ms`,
                                       }}
                                     >
-                                      {course.name}
-                                    </a>
+                                      {course.title}
+                                    </Link>
                                   </div>
                                 ))}
                               </div>

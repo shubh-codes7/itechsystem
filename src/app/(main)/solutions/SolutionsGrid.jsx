@@ -7,72 +7,6 @@ import { useEffect } from "react";
 import { fetchSolutions } from "@/slices/solutions.slice";
 import { useDispatch, useSelector } from "react-redux";
 
-// const solutions = [
-//   {
-//     id: 1,
-//     title: "Hospital Management Software",
-//     description: "Complete hospital management system with patient records, appointment scheduling, billing, inventory management, and staff coordination.",
-//     icon: Hospital,
-//     category: "Healthcare",
-//     features: ["Patient Management", "Appointment Scheduling", "Billing & Insurance", "Inventory Control"]
-//   },
-//   {
-//     id: 2,
-//     title: "OPD Management Software for Doctors",
-//     description: "Streamlined outpatient department management with digital patient records, prescription management, and appointment systems.",
-//     icon: Stethoscope,
-//     category: "Healthcare", 
-//     features: ["Digital Prescriptions", "Patient History", "Appointment Queue", "Revenue Reports"]
-//   },
-//   {
-//     id: 3,
-//     title: "Pathology Lab Software",
-//     description: "Laboratory information management system with test result tracking, sample management, and automated report generation.",
-//     icon: TestTube2,
-//     category: "Healthcare",
-//     features: ["Sample Tracking", "Result Management", "Report Generation", "Quality Control"]
-//   },
-//   {
-//     id: 4,
-//     title: "Billing Software",
-//     description: "Comprehensive billing and invoicing solution with inventory management, tax compliance, and financial reporting capabilities.",
-//     icon: Receipt,
-//     category: "Finance",
-//     features: ["Invoice Generation", "Tax Compliance", "Payment Tracking", "Financial Reports"]
-//   },
-//   {
-//     id: 5,
-//     title: "ERP for Service Industries",
-//     description: "Enterprise resource planning system tailored for service industries with project management, resource allocation, and client management.",
-//     icon: Building2,
-//     category: "Enterprise",
-//     features: ["Project Management", "Resource Planning", "Client Portal", "Financial Integration"]
-//   },
-//   {
-//     id: 6,
-//     title: "Institute Management Software",
-//     description: "Educational institution management system with student enrollment, course management, attendance tracking, and academic reporting.",
-//     icon: GraduationCap,
-//     category: "Education",
-//     features: ["Student Enrollment", "Course Management", "Attendance Tracking", "Grade Management"]
-//   },
-//   {
-//   id: 7,
-//   title: "Fumigation PC",
-//   description: "Pest control management software to schedule fumigation, track services, and maintain client records efficiently.",
-//   icon: Bug, 
-//   category: "Healthcare",
-//   features: ["Service Scheduling", "Client Management", "Inventory Tracking", "Service Reports", "Notifications"]
-// }
-// ];
-
-const categoryColors = {
-  Healthcare: "bg-secondary/10 text-secondary border-secondary/20",
-  Finance: "bg-chart-4/10 text-chart-4 border-chart-4/20", 
-  Enterprise: "bg-primary/10 text-primary border-primary/20",
-  Education: "bg-chart-3/10 text-chart-3 border-chart-3/20"
-};
-
 export default function SolutionsGrid() {
   const {data: solutions, isLoading, error} = useSelector(state => state.solutions)
   const dispatch = useDispatch()
@@ -87,7 +21,7 @@ export default function SolutionsGrid() {
       return (
         <section className="py-24 bg-background">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center">Loading services...</div>
+            <div className="text-center">Loading solutions...</div>
           </div>
         </section>
       );
