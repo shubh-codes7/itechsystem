@@ -1,6 +1,5 @@
 import CoursesPage from "./Courses";
 
-// app/courses/page.jsx
 export const metadata = {
   title: "Top IT Training Courses in India",
   description:

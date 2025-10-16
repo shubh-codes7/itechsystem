@@ -1,3 +1,4 @@
+'use client'
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -8,7 +9,7 @@ import Placements from "@/components/Placements"
 import { fetchCourses } from "@/slices/courses.slice";
 import { useDispatch, useSelector } from "react-redux"
 
-export default async function CoursesPage() {
+export default function CoursesPage() {
 
   const {data: courses, isLoading, error} = useSelector(state => state.courses)
   const dispatch = useDispatch()
