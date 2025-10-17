@@ -8,7 +8,8 @@ import {
   Users, 
   Settings,
   BarChart3,
-  BookOpen
+  BookOpen,
+  Calendar
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -29,6 +30,11 @@ const menuItems = [
     title: "Dashboard",
     url: "/admin",
     icon: BarChart3,
+  },
+  {
+    title: "Events",
+    url: "/admin/events",
+    icon: Calendar,
   },
   {
     title: "Courses",

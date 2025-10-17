@@ -18,6 +18,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "@/slices/courses.slice";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function ResponsiveHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,7 +51,6 @@ export default function ResponsiveHeader() {
     }
   });
 
-  // Build dropdown items dynamically from categorized data
   const courseDropdown = [
     {
       title: "Full Stack Development",
@@ -157,6 +157,13 @@ export default function ResponsiveHeader() {
     setActiveDropdown(activeDropdown === itemName ? null : itemName);
   };
 
+  const router = useRouter();
+
+  const handleNavigation = (path) => {
+    router.push(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/courses/${path}`);
+    setActiveDropdown('courses');
+  };
+
   return (
     <>
       {/* Main Header */}
@@ -234,16 +241,12 @@ export default function ResponsiveHeader() {
                                       alt="Icon"
                                       className="flex-shrink-0"
                                     />
-                                    <Link
-                                      key={course.title}
-                                      href={`${process.env.NEXT_PUBLIC_DOMAIN_URL}/courses/${course.slug}`}
+                                    <button
+                                      onClick={()=>handleNavigation(course.slug)}
                                       className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 text-sm"
-                                      style={{
-                                        animationDelay: `${index * 50}ms`,
-                                      }}
                                     >
                                       {course.title}
-                                    </Link>
+                                    </button>
                                   </div>
                                 ))}
                               </div>

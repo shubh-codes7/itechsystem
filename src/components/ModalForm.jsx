@@ -26,29 +26,10 @@ import axios from "axios"
 
 export default function ModalForm() {
 
-  const options = [
-    {value: "MERN Stack Development", label: "MERN Stack Development"},
-    {value: "Programming Languages", label: "Programming Languages"},
-    {value: "Data Analytics", label: "Data Analytics"},
-    {value: "Cloud Computing & DevOps", label: "Cloud Computing & DevOps"},
-    {value: "MEAN Stack Development", label: "MEAN Stack Development"},
-    {value: "Ui/Ux and Graphic Design", label: "Ui/Ux and Graphic Design"},
-    {value: "Mobile App Development", label: "Mobile App Development"},
-    {value: "Digital Marketing", label: "Digital Marketing"},
-    {value: "SAP", label: "SAP"},
-    {value: "Software Testing", label: "Software Testing"},
-    {value: "Salesforce", label: "Salesforce"},
-    {value: "DotNET", label: "DotNET"},
-    {value: "Java Full Stack", label: "Java Full Stack"},
-    {value: "PHP Web Development", label: "PHP Web Development"},
-    {value: "Python Development", label: "Python Development"},
-    {value: "Web Development", label: "Web Development"},
-  ]
-
   const [form, setForm] = useState({
     name: "",
     mobile: "",
-    location: "",
+    email: "",
     course: "",
   })
 
@@ -67,7 +48,7 @@ export default function ModalForm() {
   async function submitForm(e){
     e.preventDefault()
     
-    if (!form.name || !form.mobile || !form.location || !form.course) {
+    if (!form.name || !form.mobile || !form.email || !form.course) {
       alert("Please fill all fields before submitting.");
       return;
     }
@@ -81,7 +62,7 @@ export default function ModalForm() {
       console.log("Server Response:", res.data);
 
       alert("✅ Demo booked successfully!");
-      setForm({ name: "", mobile: "", location: "", course: "" });
+      setForm({ name: "", mobile: "", email: "", course: "" });
       setOpen(false)
       localStorage.setItem("demoFormSubmitted", "true");
     } catch (error) {
@@ -125,7 +106,6 @@ export default function ModalForm() {
               Get ahead of competition, Enquire now!
             </DialogDescription>
             <div>
-              
               <div className="flex gap-1">
                 <Check className="text-green-500"/>
                 <p className="text-sm">Get Free career counselling</p>
@@ -142,9 +122,11 @@ export default function ModalForm() {
                 <Check className="text-green-500" />
                 <p className="text-sm">Expert Trainers</p>
               </div>
-              
-              
+              {/* add our team will contact you shortly-------------------------- */}
             </div>
+
+            <p><br/>Our team will contact you shortly!</p>
+            
           </DialogHeader>
 
           <form onSubmit={submitForm} className="md:w-[50w]  p-4 md:py-4 md:px-2">
@@ -158,28 +140,12 @@ export default function ModalForm() {
               <Input onChange={handleChange} value={form.mobile} id="mobile" name="mobile" />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="location">Email</Label>
-              <Input onChange={handleChange} value={form.location} id="location" name="location"  />
+              <Label htmlFor="email">Email</Label>
+              <Input onChange={handleChange} value={form.email} id="email" name="email" />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="course">Select Course</Label>
-              <Select 
-                
-                id="course" 
-                value={form.course} 
-                onValueChange={(value) => setForm((prev) => ({ ...prev, course: value }))}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Course" />
-                </SelectTrigger>
-                <SelectContent>
-                  {
-                    options.map((item, idx) => {
-                      return <SelectItem key={idx} value={item.value}>{item.label}</SelectItem>
-                    })
-                  }
-                </SelectContent>
-              </Select>
+              <Label htmlFor="course">Course</Label>
+              <Input onChange={handleChange} value={form.course} id="course" name="course" />
             </div>
           </div>
           <DialogFooter className="mt-2">

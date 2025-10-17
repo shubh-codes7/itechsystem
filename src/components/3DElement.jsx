@@ -41,10 +41,30 @@ export default function HeroElement() {
       <style jsx>{`
         @keyframes orbit {
           from {
+            transform: rotate(0deg) translateX(150px) rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg) translateX(150px) rotate(-360deg);
+          }
+        }
+
+        @keyframes orbitDesktop {
+          from {
             transform: rotate(0deg) translateX(200px) rotate(0deg);
           }
           to {
             transform: rotate(360deg) translateX(200px) rotate(-360deg);
+          }
+        }
+
+
+        .orbitAnimation {
+          animation: orbit 20s linear infinite;
+        }
+
+        @media (min-width: 768px) {
+          .orbitAnimation {
+            animation: orbitDesktop 20s linear infinite;
           }
         }
         
@@ -65,7 +85,7 @@ export default function HeroElement() {
         >
           
           {/* Center Image */}
-          <Image alt="programming laptop" src={laptopImg} width={350}/>
+          <Image alt="programming laptop" src={laptopImg} width={350} className="w-[250px] md:w-[350px] h-auto"/>
 
           {/* Orbiting Course Icons */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center">
@@ -74,9 +94,8 @@ export default function HeroElement() {
               return (
                 <div
                   key={index}
-                  className="absolute"
+                  className="absolute orbitAnimation"
                   style={{
-                    animation: `orbit 20s linear infinite`,
                     animationDelay: `${-(index / courses.length) * 20}s`
                   }}
                 >

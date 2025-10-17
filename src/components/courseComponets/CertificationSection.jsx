@@ -72,7 +72,7 @@ export default function CertificationSection() {
         <div className="text-center">
           <div className="bg-card border border-card-border rounded-lg p-8">
             <h4 className="text-xl font-semibold mb-4" data-testid="text-guarantee-title">
-              100% Placement Assistance Guarantee
+              100% Placement Assistance
             </h4>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               We don’t just teach—we place. From resume building and mock interviews to salary negotiation and lifetime job support, our institute ensures you're fully prepared to land your dream role in tech.

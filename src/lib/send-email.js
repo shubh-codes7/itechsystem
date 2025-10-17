@@ -9,7 +9,7 @@ export default async function sendMail({ form}){
       from: 'I-Tech Modal Form <onboarding@resend.dev>',
       to: 'shubhamcodes7@gmail.com',
       subject: "New Enquiry from itechsystem.in",
-      react: EmailTemplate({name: form.name, mobile: form.mobile, location: form.location, course: form.course})
+      react: EmailTemplate({name: form.name, mobile: form.mobile, email: form.email, course: form.course})
     });
 
     if (error) {

@@ -25,7 +25,7 @@ const popularCourses = [
   {
     id: "2",
     slug: "programming-diploma",
-    title: "Diploma in Programming Languages",
+    title: "Master in Programming",
     image: langImg,
     description:
       "Develop efficient programs while learning data structures, algorithms, and OOP concepts.",

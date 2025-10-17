@@ -4,7 +4,7 @@ const DemoFormSchema = mongoose.Schema(
   {
     name: String,
     mobile: String,
-    location: String,
+    email: String,
     course: String,
   },
   { timestamps: true }

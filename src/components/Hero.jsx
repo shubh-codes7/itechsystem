@@ -72,7 +72,7 @@ export default function Hero() {
 
             <h1 className="text-5xl font-[Poppins] text-white lg:text-7xl font-bold leading-tight">
               Master
-              <span className="block font-mono bg-clip-text text-blue-200 min-h-[13rem] max-w-[30rem]">
+              <span className="block font-mono bg-clip-text text-blue-200 max-w-[30rem]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={skills[currentSkill]}
