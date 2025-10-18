@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { connectDB } from "@/lib/dbConnect.js"
-import Placement from '@/models/Service.js';
+import Placement from '@/models/Placement';
 
 export async function GET() {
   try {

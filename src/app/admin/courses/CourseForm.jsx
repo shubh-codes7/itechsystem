@@ -167,7 +167,7 @@ export function CourseForm({ initialData, onSubmit, onCancel, loading }) {
   };
 
   return (
-    <form className="space-y-6">
+    <form className="space-y-6 dark">
       <Card>
         <CardHeader>
           <CardTitle>Basic Information</CardTitle>

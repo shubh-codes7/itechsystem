@@ -102,10 +102,10 @@ export default function ModalForm() {
 
           <DialogHeader className="flex flex-col justify-center p-4 text-white bg-gradient-to-br from-blue-900 to-purple-900">
             <DialogTitle className="text-center text-xl">Enquire Now!</DialogTitle>
-            <DialogDescription className="text-center text-white mb-2">
+            <DialogDescription className="text-center text-white mb-2 md:block hidden">
               Get ahead of competition, Enquire now!
             </DialogDescription>
-            <div>
+            <div className="md:block hidden">
               <div className="flex gap-1">
                 <Check className="text-green-500"/>
                 <p className="text-sm">Get Free career counselling</p>

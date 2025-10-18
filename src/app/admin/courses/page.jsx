@@ -2,17 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { DataTable } from "@/components/DataTable";
-import { CourseForm } from "@/components/CourseForm";
+import { CourseForm } from "@/app/admin/courses/CourseForm";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import axios from "axios";
 
 const columns = [
   { key: 'title', label: 'Course Title', sortable: true },
-  { key: 'slug', label: 'Slug', sortable: true },
-  // { key: 'technologies', label: 'Technologies', sortable: false },
-  // { key: 'students', label: 'Students', sortable: true },
-  // { key: 'status', label: 'Status', sortable: true },
+  { key: 'slug', label: 'Slug', sortable: true }
 ];
 
 export default function Courses() {

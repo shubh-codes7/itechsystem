@@ -3,10 +3,10 @@ import { connectDB } from "@/lib/dbConnect.js"
 import Placement from '@/models/Service.js';
 
 export async function GET(request, { params }) {
-  const { slug } = await params;
+  const { id } = await params;
   try {
     await connectDB();
-    const placement = await Placement.findOne({slug});
+    const placement = await Placement.findById(id);
     
     if (!placement) {
       return NextResponse.json(
@@ -26,13 +26,13 @@ export async function GET(request, { params }) {
 }
 
 export async function PUT(request, { params }) {
-  const { slug } = await params;
+  const { id } = await params;
   try {
     await connectDB();
     const body = await request.json();
     
-    const placement = await Placement.findOneAndUpdate(
-      {slug},
+    const placement = await Placement.findByIdAndUpdate(
+      id,
       body,
       { new: true, runValidators: true }
     );
@@ -55,10 +55,10 @@ export async function PUT(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
-  const { slug } = await params;
+  const { id } = await params;
   try {
     await connectDB();
-    const placement = await Placement.findOneAndDelete({slug});
+    const placement = await Placement.findByIdAndDelete(id);
     
     if (!placement) {
       return NextResponse.json(

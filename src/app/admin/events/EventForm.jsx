@@ -56,7 +56,7 @@ export function EventForm({ initialData, onSubmit, onCancel, loading }) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 dark">
       <Card>
         <CardHeader>
           <CardTitle>Basic Information</CardTitle>

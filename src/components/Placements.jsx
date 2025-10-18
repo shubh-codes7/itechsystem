@@ -1,37 +1,27 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Github, Linkedin, MapPin, Calendar } from "lucide-react";
+import axios from "axios";
 
 export default function Placements() {
   const [isHovered, setIsHovered] = useState(false);
+  const [placedStudents, setPlacedStudents] = useState([])
 
-  // Sample student placement data
-  const placedStudents = [
-    {
-      id: 1,
-      name: "Rishikesh Aher",
-      role: "Network Support",
-      company: "Calibers Infotech",
-    },
-    {
-      id: 2,
-      name: "Aarti Magar",
-      role: "Software Developer",
-      company: "Application Square Infotech",
-    },
+  useEffect(()=>{
 
-  ];
+    async function fetchPlacements(){
+      try {
+        const res = await axios.get('/api/placements')
+        setPlacedStudents(res.data)
+      } catch (error) {
+        console.error("Error fetching placements:", error);
+      }
+    }
 
-  // Duplicate the array for seamless looping
-  const duplicatedStudents = [...placedStudents, ...placedStudents];
-
-  const handleSocialClick = (url, platform) => {
-    console.log(`Opening ${platform}: ${url}`);
-    window.open(url, '_blank');
-  };
+    fetchPlacements()
+  }, [])
 
   return (
     <section className="py-16  ">
@@ -58,16 +48,16 @@ export default function Placements() {
           <div 
             className="flex gap-6 animate-marquee"
             style={{
-              width: `${duplicatedStudents.length * 350}px`,
+              width: `${placedStudents.length * 350}px`,
               animationDuration: '20s',
               animationTimingFunction: 'linear',
               animationIterationCount: 'infinite',
               animationPlayState: isHovered ? 'paused' : 'running'
             }}
           >
-            {duplicatedStudents.map((student, index) => (
+            {placedStudents.map((student, index) => (
               <Card 
-                key={`${student.id}-${index}`}
+                key={`${student._id}-${index}`}
                 className="flex-shrink-0 min-w-fit hover-elevate transition-all duration-300 bg-gradient-to-r from-primary/5 to-secondary/5"
               >
                 <CardContent className="px-6">

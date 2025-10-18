@@ -75,7 +75,7 @@ export function ProjectForm({ initialData, onSubmit, onCancel }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 dark">
       <Card>
         <CardHeader>
           <CardTitle>Basic Information</CardTitle>
